@@ -1,7 +1,5 @@
 import * as React from 'react';
 import {
-  ActivityIndicator,
-  Button,
   FlatList,
   Image,
   StyleSheet,
@@ -23,6 +21,7 @@ class ListItem extends React.PureComponent {
       <TouchableHighlight underlayColor = '#dddddd'
         onPress = {this._onPress}>
         <View>
+        <View style = {styles.separator}/>
         <Image style = {styles.thumbnail} source = { item.image } />
           <View style = {styles.textContainer}>
             <Text styles = {styles.title}> {item.title}</Text>
@@ -73,7 +72,8 @@ export default class UserLogin extends React.Component {
 
     render () {       
         return (
-            <View style = { styles.gridBackground }>
+            <View>
+                <View style = { styles.header } />
                 <FlatList 
                     data = { this.state.gridItems } 
                     keyExtractor={this._keyExtrator}
@@ -86,26 +86,28 @@ export default class UserLogin extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  thumbnail : {
-    width: 150,
-    height: 150,
-    marginRight :10,
-    alignSelf: 'center'
-  },
-  textContainer : {
-    flex: 1,
+  header : {
+    backgroundColor: "red",
+    width: '100%',
+    height: '20%'
+
   },
   separator : {
-    height: 1,
-    backgroundColor: "#dddddd"
+    height: 20,
   },
-  price : {
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: "#488BEC"
+  textContainer : {
+    alignSelf: 'center',
+    //flex: 1,
   },
   title : {
     fontSize: 20,
     color: "#656565"
+  },
+  thumbnail : {
+    justifyContent: 'space-around',
+    width: 180,
+    height: 180,
+    marginRight :10,
+    alignSelf: 'center'
   },
   });

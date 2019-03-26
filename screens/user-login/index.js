@@ -25,8 +25,8 @@ export default class UserLogin extends React.Component {
 
   _onLoginPressed = () => {
     if (
-      this.state.userEmail == 'coso' &&
-      this.state.userPassword == 'coso2019'
+      this.state.userEmail == '' &&
+      this.state.userPassword == ''
     ) {
       this.props.navigation.navigate('Home', { title: this.state.userEmail } );
     } else {
