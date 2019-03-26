@@ -9,6 +9,7 @@ import {
   View,
 } from 'react-native';
 
+
 export default class UserLogin extends React.Component {
     static navigationOptions = ({ navigation }) => ({
         title: `${navigation.state.params.title}`
@@ -19,10 +20,11 @@ export default class UserLogin extends React.Component {
         this.state = {
           userName: '',
           gridItems: [
-              { key: 'Check the garage\'s outsides' },
+              { title: 'Check for obstacles at the entrance',
+                image: 
+              },
               { key: 'Parking assistance' },
               { key: 'Program an automatic garage opening'},
-              { key: 'Find obstacles near the garage\s walls' }
           ]
         };
       }
