@@ -22,10 +22,10 @@ class ListItem extends React.PureComponent {
     return (
       <TouchableHighlight underlayColor = '#dddddd'
         onPress = {this._onPress}>
-        <View style = {styles.rowContainer}>
+        <View>
         <Image style = {styles.thumbnail} source = { item.image } />
           <View style = {styles.textContainer}>
-            <Text styles = {styles.title} numberOflLines = {1}> {item.title}</Text>
+            <Text styles = {styles.title}> {item.title}</Text>
           </View>
           <View style = {styles.separator}>
           </View>
@@ -87,9 +87,10 @@ export default class UserLogin extends React.Component {
 
 const styles = StyleSheet.create({
   thumbnail : {
-    width: 80,
-    height: 80,
-    marginRight :10
+    width: 150,
+    height: 150,
+    marginRight :10,
+    alignSelf: 'center'
   },
   textContainer : {
     flex: 1,
@@ -107,8 +108,4 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: "#656565"
   },
-  rowContainer : {
-    flexDirection: 'row',
-    padding: 10
-  }
   });
