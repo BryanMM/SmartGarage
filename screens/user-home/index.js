@@ -18,24 +18,29 @@ class ListItem extends React.PureComponent {
   render () {
     const { item } = this.props
     return (
-      <TouchableHighlight  Color = '#ffffff' justifyContent = 'center'
+      <TouchableHighlight  style = { styles.gridItem }
         onPress = {this._onPress}>
-        <View>
+        <View style = { styles.gridItem } backgroundColor = '#cfedfc'>
             <View style = { styles.textContainer }>
-              <Text styles = { styles.title }> { item.title } </Text>
+              <Text style = { styles.title }> { item.title } </Text>
             </View>
-            <Image style = { styles.thumbnail } source = { item.image } />       
-            <View style = { styles.separator }/> 
+            <Image style = { styles.thumbnail } source = { item.image } />     
+            <View style = { styles.separator }/>   
         </View>
-      </TouchableHighlight>
-      
+      </TouchableHighlight>       
     )
   }
 }
 export default class UserLogin extends React.Component {
     static navigationOptions = ({ navigation }) => ({
-      Color: '#161D25',
-      title: `welcome ${ navigation.state.params.title }!`,  
+      title: `welcome ${ navigation.state.params.title }`,  
+      headerStyle: {
+        backgroundColor: '#161D25',
+      },
+      headerTintColor: '#cfedfc',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
     });
 
     constructor(props) {
@@ -73,10 +78,11 @@ export default class UserLogin extends React.Component {
         return (
             <View style = { styles.homeBackground }>
                 <FlatList 
-                    data = { this.state.gridItems } 
-                    keyExtractor={ this._keyExtrator }
-                    renderItem = { this._renderItem }
-                    numColumns = { 2 }
+                  contentContainerStyle = {styles.grid}
+                  data = { this.state.gridItems } 
+                  keyExtractor={ this._keyExtrator }
+                  renderItem = { this._renderItem }
+                  numColumns = { 2 }
                 /> 
             </View>          
         );
@@ -84,6 +90,17 @@ export default class UserLogin extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  grid: {
+    justifyContent: 'center',
+    flex: 1,
+  },
+  gridItem: {
+    margin:15,
+    width: 170,
+    height: 170,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   header : {
     width: '100%',
     height: '20%',
@@ -94,27 +111,28 @@ const styles = StyleSheet.create({
     height: '20%'
   },
   homeBackground : {
-    paddingTop: 120,
+    alignItems: 'center',
+    paddingTop: 20,
     width: '100%',
     height: '100%',
-    backgroundColor: 'white'
-  },
-  separator : {
-    height: 20,
+    backgroundColor: '#cfedfc',
   },
   textContainer : {
-    alignSelf: 'center',
-    //flex: 1,
+    flex: 1,
   },
   title : {
-    fontSize: 20,
-    color: "#656565"
+    fontSize: 18,
+    color: '#161D25',
+    fontWeight: 'bold',
+    paddingBottom: 15,
+    textAlign:'center',
   },
   thumbnail : {
     alignSelf: 'center',
     width: 130,
     height: 130,
-    marginRight :10,
-    alignSelf: 'center'
+    borderWidth: 1.5, 
+    //borderColor: 'white',
+    borderRadius: 50,
   },
   });

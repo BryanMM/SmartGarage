@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 
 import smartGarage from '../../assets/smartGarage.png';
+import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
+
 
 export default class UserLogin extends React.Component {
   static navigationOptions = {
@@ -68,7 +70,7 @@ export default class UserLogin extends React.Component {
             placeholder="Type here your email"
             value={this.state.userEmail}
             onChange={this._onUserTextChanged}
-            placeholderTextColor="#656565"
+            placeholderTextColor="#cfedfc"
           />
           <TextInput
             underlineColorAndroid={'transparent'}
@@ -76,14 +78,13 @@ export default class UserLogin extends React.Component {
             placeholder="Type here your password"
             value={this.state.userPassword}
             onChange={this._onPasswordTextChanged}
-            placeholderTextColor="#656565"
-          />
-          <Button
-            onPress={this._onLoginPressed}
-            color="#00004a"
-            title="Iniciar sesión"
+            placeholderTextColor="#cfedfc"
           />
         </View>
+        <TouchableOpacity style = {styles.loginButton}
+                            onPress = {this._onLoginPressed} >
+              <Text style = {styles.buttonText}>LOGIN</Text>
+        </TouchableOpacity>
         {spinner}
         <Text style={styles.description}>{this.state.message}</Text>
       </View>
@@ -92,19 +93,24 @@ export default class UserLogin extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  buttonText :{
+    color: '#161D25',
+    textAlign: 'center',
+    fontWeight: '700'
+  },
+  container : {
     alignItems: 'center',
     backgroundColor: '#161D25',
     height: '100%',
     width: '100%',
   },
-  description: {
+  description : {
     marginBottom: 20,
     fontSize: 50,
     textAlign: 'center',
     color: '#cfedfc',
   },
-  flowRight: {
+  flowRight : {
     flexDirection: 'column',
     alignItems: 'center',
     alignSelf: 'stretch',
@@ -119,9 +125,15 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '40%'
   },
+  loginButton : {
+    width: '100%',
+    backgroundColor: '#cfedfc',
+    paddingHorizontal: 170,
+    paddingVertical: 15
+  },
   searchInput: {
     height: 50,
-    padding: 4,
+    padding: 10,
     margin: 5,
     flexGrow: 1,
     fontSize: 23,
