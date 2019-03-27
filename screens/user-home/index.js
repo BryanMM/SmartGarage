@@ -18,16 +18,14 @@ class ListItem extends React.PureComponent {
   render () {
     const { item } = this.props
     return (
-      <TouchableHighlight underlayColor = '#dddddd'
+      <TouchableHighlight  Color = '#ffffff' justifyContent = 'center'
         onPress = {this._onPress}>
         <View>
-        <View style = {styles.separator}/>
-        <Image style = {styles.thumbnail} source = { item.image } />
-          <View style = {styles.textContainer}>
-            <Text styles = {styles.title}> {item.title}</Text>
-          </View>
-          <View style = {styles.separator}>
-          </View>
+            <View style = { styles.textContainer }>
+              <Text styles = { styles.title }> { item.title } </Text>
+            </View>
+            <Image style = { styles.thumbnail } source = { item.image } />       
+            <View style = { styles.separator }/> 
         </View>
       </TouchableHighlight>
       
@@ -36,7 +34,8 @@ class ListItem extends React.PureComponent {
 }
 export default class UserLogin extends React.Component {
     static navigationOptions = ({ navigation }) => ({
-        title: `${navigation.state.params.title}`
+      Color: '#161D25',
+      title: `welcome ${ navigation.state.params.title }!`,  
     });
 
     constructor(props) {
@@ -44,7 +43,7 @@ export default class UserLogin extends React.Component {
         this.state = {
           gridItems: [
               { 
-                title: 'Check for obstacles at the entrance',
+                title: 'Check for obstacles \n at the entrance',
                 image: GarageObstruction
               },
               { 
@@ -52,7 +51,7 @@ export default class UserLogin extends React.Component {
                 image: ParkingAssistance
               },
               { 
-                title: 'Program an automatic garage opening',
+                title: 'Program an automatic \n garage opening',
                 image: schedParking
               },
           ]
@@ -72,13 +71,12 @@ export default class UserLogin extends React.Component {
 
     render () {       
         return (
-            <View>
-                <View style = { styles.header } />
+            <View style = { styles.homeBackground }>
                 <FlatList 
                     data = { this.state.gridItems } 
-                    keyExtractor={this._keyExtrator}
+                    keyExtractor={ this._keyExtrator }
                     renderItem = { this._renderItem }
-                    numColumns = {2}
+                    numColumns = { 2 }
                 /> 
             </View>          
         );
@@ -87,10 +85,19 @@ export default class UserLogin extends React.Component {
 
 const styles = StyleSheet.create({
   header : {
-    backgroundColor: "red",
+    width: '100%',
+    height: '20%',
+
+  },
+  headerImage: {
     width: '100%',
     height: '20%'
-
+  },
+  homeBackground : {
+    paddingTop: 120,
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'white'
   },
   separator : {
     height: 20,
@@ -104,9 +111,9 @@ const styles = StyleSheet.create({
     color: "#656565"
   },
   thumbnail : {
-    justifyContent: 'space-around',
-    width: 180,
-    height: 180,
+    alignSelf: 'center',
+    width: 130,
+    height: 130,
     marginRight :10,
     alignSelf: 'center'
   },

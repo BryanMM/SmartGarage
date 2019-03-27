@@ -9,9 +9,11 @@ import {
   ActivityIndicator,
 } from 'react-native';
 
+import smartGarage from '../../assets/smartGarage.png';
+
 export default class UserLogin extends React.Component {
-  navigationOptions = {
-    title: 'Inicio de sesión',
+  static navigationOptions = {
+    header: null,
   };
 
   constructor(props) {
@@ -51,16 +53,19 @@ export default class UserLogin extends React.Component {
       <ActivityIndicator size="large" />
     ) : null;
     return (
-      <View style={styles.container}>
-        <Text style={styles.description}>
-          Ingrese sus credenciales para iniciar sesión
+      <View style={ styles.container }>
+        <View style = { styles.header }>
+        <Image style = { styles.headerImage } source = { smartGarage } />  
+        </View>
+        <Text style={ styles.description} >
+          Welcome!
         </Text>
         <Text style={styles.description} />
         <View style={styles.flowRight}>
           <TextInput
             underlineColorAndroid={'transparent'}
             style={styles.searchInput}
-            placeholder="Ingrese aquí su nombre de usuario"
+            placeholder="Type here your email"
             value={this.state.userEmail}
             onChange={this._onUserTextChanged}
             placeholderTextColor="#656565"
@@ -68,14 +73,14 @@ export default class UserLogin extends React.Component {
           <TextInput
             underlineColorAndroid={'transparent'}
             style={styles.searchInput}
-            placeholder="Ingrese aquí su contraseña"
+            placeholder="Type here your password"
             value={this.state.userPassword}
             onChange={this._onPasswordTextChanged}
             placeholderTextColor="#656565"
           />
           <Button
             onPress={this._onLoginPressed}
-            color="#48BBEC"
+            color="#00004a"
             title="Iniciar sesión"
           />
         </View>
@@ -88,16 +93,16 @@ export default class UserLogin extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 30,
-    marginTop: 65,
     alignItems: 'center',
+    backgroundColor: '#161D25',
+    height: '100%',
+    width: '100%',
   },
   description: {
     marginBottom: 20,
-    fontSize: 18,
+    fontSize: 50,
     textAlign: 'center',
-    color: '#656565',
+    color: '#cfedfc',
   },
   flowRight: {
     flexDirection: 'column',
@@ -105,15 +110,24 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     color: '#656565',
   },
+  header : {
+    width: '100%',
+    height: '40%',
+
+  },
+  headerImage: {
+    width: '100%',
+    height: '40%'
+  },
   searchInput: {
-    height: 36,
+    height: 50,
     padding: 4,
     margin: 5,
     flexGrow: 1,
-    fontSize: 18,
-    borderWidth: 1,
-    borderColor: '#48BBEC',
+    fontSize: 23,
+    borderWidth: 2,
+    borderColor: '#cfedfc',
     borderRadius: 8,
-    color: '#48BBEC',
+    color: '#cfedfc',
   },
 });
