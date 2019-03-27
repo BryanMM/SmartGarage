@@ -13,14 +13,14 @@ import schedParking from '../../assets/schedParking.png';
 
 class ListItem extends React.PureComponent {
   _onPress = () => {
-    this.props.onPressItem(this.props.index)
+    this.props.navigation.navigate('');
   }
   render () {
     const { item } = this.props
     return (
       <TouchableHighlight  style = { styles.gridItem }
         onPress = {this._onPress}>
-        <View style = { styles.gridItem } backgroundColor = '#cfedfc'>
+        <View style = { styles.gridItem } backgroundColor = '#7dceff'>
             <View style = { styles.textContainer }>
               <Text style = { styles.title }> { item.title } </Text>
             </View>
@@ -33,7 +33,7 @@ class ListItem extends React.PureComponent {
 }
 export default class UserLogin extends React.Component {
     static navigationOptions = ({ navigation }) => ({
-      title: `welcome ${ navigation.state.params.title }`,  
+      title: `Welcome ${ navigation.state.params.title }`,  
       headerStyle: {
         backgroundColor: '#161D25',
       },
@@ -48,7 +48,7 @@ export default class UserLogin extends React.Component {
         this.state = {
           gridItems: [
               { 
-                title: 'Check for obstacles \n at the entrance',
+                title: 'Check for obstacles',
                 image: GarageObstruction
               },
               { 
@@ -56,14 +56,14 @@ export default class UserLogin extends React.Component {
                 image: ParkingAssistance
               },
               { 
-                title: 'Program an automatic \n garage opening',
+                title: 'Automatic \n garage opening',
                 image: schedParking
               },
           ]
         };
       }
     
-    _keyExtrator = (item, index) => index.toString()
+    _keyExtrator = ( index ) => index.toString()
 
     _renderItem = ({ item, index }) => {
       return ( 
@@ -100,6 +100,8 @@ const styles = StyleSheet.create({
     height: 170,
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 2, 
+    borderRadius: 300,
   },
   header : {
     width: '100%',
@@ -118,10 +120,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#cfedfc',
   },
   textContainer : {
-    flex: 1,
   },
   title : {
-    fontSize: 18,
+    fontSize: 12,
+    fontFamily: 'Roboto',
     color: '#161D25',
     fontWeight: 'bold',
     paddingBottom: 15,
@@ -130,9 +132,8 @@ const styles = StyleSheet.create({
   thumbnail : {
     alignSelf: 'center',
     width: 130,
-    height: 130,
+    height: 100,
     borderWidth: 1.5, 
-    //borderColor: 'white',
     borderRadius: 50,
   },
   });

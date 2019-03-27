@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import smartGarage from '../../assets/smartGarage.png';
-import { TouchableHighlight, TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 export default class UserLogin extends React.Component {
@@ -59,15 +59,12 @@ export default class UserLogin extends React.Component {
         <View style = { styles.header }>
         <Image style = { styles.headerImage } source = { smartGarage } />  
         </View>
-        <Text style={ styles.description} >
-          Welcome!
-        </Text>
         <Text style={styles.description} />
         <View style={styles.flowRight}>
           <TextInput
             underlineColorAndroid={'transparent'}
             style={styles.searchInput}
-            placeholder="Type here your email"
+            placeholder=" Type here your email "
             value={this.state.userEmail}
             onChange={this._onUserTextChanged}
             placeholderTextColor="#cfedfc"
@@ -94,21 +91,16 @@ export default class UserLogin extends React.Component {
 
 const styles = StyleSheet.create({
   buttonText :{
+    fontFamily: 'Roboto',
     color: '#161D25',
     textAlign: 'center',
-    fontWeight: '700'
+    fontWeight: '700',
   },
   container : {
     alignItems: 'center',
     backgroundColor: '#161D25',
     height: '100%',
     width: '100%',
-  },
-  description : {
-    marginBottom: 20,
-    fontSize: 50,
-    textAlign: 'center',
-    color: '#cfedfc',
   },
   flowRight : {
     flexDirection: 'column',
@@ -117,22 +109,25 @@ const styles = StyleSheet.create({
     color: '#656565',
   },
   header : {
-    width: '100%',
-    height: '40%',
-
+    alignItems: 'center',
+    flexGrow: 1,
+    justifyContent: 'center'
   },
   headerImage: {
-    width: '100%',
-    height: '40%'
+    position: 'absolute',
+    width: 300,
+    height: 100
   },
   loginButton : {
     width: '100%',
     backgroundColor: '#cfedfc',
-    paddingHorizontal: 170,
+    paddingHorizontal: 160,
     paddingVertical: 15
   },
   searchInput: {
+    fontFamily: 'Roboto',
     height: 50,
+    width: '80%',
     padding: 10,
     margin: 5,
     flexGrow: 1,
