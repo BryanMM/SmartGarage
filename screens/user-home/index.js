@@ -13,14 +13,14 @@ import schedParking from '../../assets/schedParking.png';
 import settings from '../../assets/settings.png';
 
 class ListItem extends React.PureComponent {
-  _onPress = () => {
-    this.props.navigation.navigate('');
+  _onPress = (nextScreen) => {
+    this.props.navigation.navigate(`${nextScreen}`);
   }
   render () {
     const { item } = this.props
     return (
       <TouchableHighlight  style = { styles.gridItem }
-        onPress = {this._onPress}>
+        onPress = {this._onPress (item.tag)}>
         <View style = { styles.gridItem } backgroundColor = '#7dceff'>
             <View style = { styles.textContainer }>
               <Text style = { styles.title }> { item.title } </Text>
@@ -51,22 +51,22 @@ export default class UserLogin extends React.Component {
               { 
                 title: 'Check for obstacles',
                 image: GarageObstruction,
-                tag: 'obstruction'
+                tag: 'Obstruction'
               },
               { 
                 title: 'Parking assistance',
                 image: ParkingAssistance,
-                tag: 'assistance'
+                tag: 'Assistance'
               },
               { 
                 title: 'Automatic \n garage opening',
                 image: schedParking,
-                tag: 'schedule'
+                tag: 'Schedule'
               },
               {
                 title: 'Settings',
                 image: settings,
-                tag: 'settings'
+                tag: 'Settings'
               }
           ]
         };
