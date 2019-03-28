@@ -14,13 +14,13 @@ import settings from '../../assets/settings.png';
 
 class ListItem extends React.PureComponent {
   _onPress = (nextScreen) => {
-    this.props.navigation.navigate(`${nextScreen}`);
+    this.props.navigation.navigate( nextScreen );
   }
   render () {
     const { item } = this.props
     return (
       <TouchableHighlight  style = { styles.gridItem }
-        onPress = {this._onPress (item.tag)}>
+        onPress = {this._onPress}>
         <View style = { styles.gridItem } backgroundColor = '#7dceff'>
             <View style = { styles.textContainer }>
               <Text style = { styles.title }> { item.title } </Text>
