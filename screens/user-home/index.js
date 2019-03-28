@@ -10,6 +10,7 @@ import {
 import ParkingAssistance from '../../assets/parkingAssistance.png';
 import GarageObstruction from '../../assets/garageObstruction.png';
 import schedParking from '../../assets/schedParking.png';
+import settings from '../../assets/settings.png';
 
 class ListItem extends React.PureComponent {
   _onPress = () => {
@@ -49,16 +50,24 @@ export default class UserLogin extends React.Component {
           gridItems: [
               { 
                 title: 'Check for obstacles',
-                image: GarageObstruction
+                image: GarageObstruction,
+                tag: 'obstruction'
               },
               { 
                 title: 'Parking assistance',
-                image: ParkingAssistance
+                image: ParkingAssistance,
+                tag: 'assistance'
               },
               { 
                 title: 'Automatic \n garage opening',
-                image: schedParking
+                image: schedParking,
+                tag: 'schedule'
               },
+              {
+                title: 'Settings',
+                image: settings,
+                tag: 'settings'
+              }
           ]
         };
       }
