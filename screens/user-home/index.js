@@ -11,16 +11,18 @@ import ParkingAssistance from '../../assets/parkingAssistance.png';
 import GarageObstruction from '../../assets/garageObstruction.png';
 import schedParking from '../../assets/schedParking.png';
 import settings from '../../assets/settings.png';
+import { withNavigation } from 'react-navigation';
 
 class ListItem extends React.PureComponent {
-  _onPress = (nextScreen) => {
-    this.props.navigation.navigate( nextScreen );
+  _onPress = (nextView) => {
+    this.props.navigation.navigate( `${nextView}` );
   }
   render () {
     const { item } = this.props
+    const { navigation } = this.props
     return (
       <TouchableHighlight  style = { styles.gridItem }
-        onPress = {this._onPress}>
+        onPress = {() => navigation.navigate(item.tag)}>
         <View style = { styles.gridItem } backgroundColor = '#7dceff'>
             <View style = { styles.textContainer }>
               <Text style = { styles.title }> { item.title } </Text>
@@ -32,7 +34,7 @@ class ListItem extends React.PureComponent {
     )
   }
 }
-export default class UserLogin extends React.Component {
+export default class Home extends React.Component {
     static navigationOptions = ({ navigation }) => ({
       title: `Welcome ${ navigation.state.params.title }`,  
       headerStyle: {
@@ -77,6 +79,7 @@ export default class UserLogin extends React.Component {
     _renderItem = ({ item, index }) => {
       return ( 
         <ListItem
+          navigation = {this.props.navigation}
           item = {item}
           index = {index}
         />
