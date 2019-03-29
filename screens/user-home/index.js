@@ -11,7 +11,6 @@ import ParkingAssistance from '../../assets/parkingAssistance.png';
 import GarageObstruction from '../../assets/garageObstruction.png';
 import schedParking from '../../assets/schedParking.png';
 import settings from '../../assets/settings.png';
-import { withNavigation } from 'react-navigation';
 
 class ListItem extends React.PureComponent {
   _onPress = (nextView) => {
