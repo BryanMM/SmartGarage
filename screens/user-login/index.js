@@ -91,8 +91,8 @@ export default class UserLogin extends React.Component {
 
 const styles = StyleSheet.create({
   buttonText :{
-    fontFamily: 'Roboto',
     color: '#161D25',
+    fontFamily: 'Roboto',
     textAlign: 'center',
     fontWeight: '700',
   },
