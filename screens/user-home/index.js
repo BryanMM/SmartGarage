@@ -8,8 +8,8 @@ import {
   View,
 } from 'react-native';
 
-import IconParkingAssistance from '../../assets/parkingAssistance.png';
 import IconGarageObstruction from '../../assets/garageObstruction.png';
+import IconParkingAssistance from '../../assets/parkingAssistance.png';
 import IconScheduleParking from '../../assets/schedParking.png';
 import IconSettings from '../../assets/settings.png';
 
@@ -61,7 +61,8 @@ export default class Home extends React.Component {
         {
           image: IconScheduleParking,
           tag: 'Schedule',
-          title: 'Automatic \n garage opening'        },
+          title: 'Automatic \n garage opening'
+        },
         {
           image: IconSettings,
           tag: 'Settings',
@@ -76,8 +77,8 @@ export default class Home extends React.Component {
   _renderItem = ({ item, index }) => {
     return (
       <ListItem
-        item={item}
         index={index}
+        item={item}
         navigation={this.props.navigation}
       />
     )
@@ -102,10 +103,10 @@ const styles = StyleSheet.create({
   gridItem: {
     alignItems: 'center',
     borderRadius: 300,
-    borderWidth: 2, 
+    borderWidth: 2,
     height: 170,
     justifyContent: 'center',
-    margin:15,
+    margin: 15,
     width: 170,
   },
   title: {
@@ -114,12 +115,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: 'bold',
     paddingBottom: 15,
-    textAlign:'center',
+    textAlign: 'center',
   },
   thumbnail: {
     alignSelf: 'center',
     borderRadius: 50,
-    borderWidth: 1.5, 
+    borderWidth: 1.5,
     height: 100,
     width: 130
   },

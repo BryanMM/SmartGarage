@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  Button,
   Text,
   TextInput,
   View,
@@ -62,20 +61,20 @@ export default class UserLogin extends React.Component {
         <Text style={styles.description} />
         <View style={styles.flowRight}>
           <TextInput
-            underlineColorAndroid={'transparent'}
-            style={styles.searchInput}
-            placeholder=" Type here your email "
-            value={this.state.userEmail}
             onChange={this._onUserTextChanged}
+            placeholder=" Type here your email "
             placeholderTextColor="#cfedfc"
+            style={styles.searchInput}
+            underlineColorAndroid={'transparent'}
+            value={this.state.userEmail}
           />
           <TextInput
-            underlineColorAndroid={'transparent'}
-            style={styles.searchInput}
-            placeholder="Type here your password"
-            value={this.state.userPassword}
             onChange={this._onPasswordTextChanged}
+            placeholder="Type here your password"
             placeholderTextColor="#cfedfc"
+            style={styles.searchInput}
+            underlineColorAndroid={'transparent'}
+            value={this.state.userPassword}
           />
         </View>
         <TouchableOpacity style = {styles.loginButton}
@@ -93,8 +92,8 @@ const styles = StyleSheet.create({
   buttonText :{
     color: '#161D25',
     fontFamily: 'Roboto',
-    textAlign: 'center',
     fontWeight: '700',
+    textAlign: 'center',
   },
   container : {
     alignItems: 'center',
@@ -103,10 +102,10 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   flowRight : {
-    flexDirection: 'column',
     alignItems: 'center',
     alignSelf: 'stretch',
     color: '#656565',
+    flexDirection: 'column',
   },
   header : {
     alignItems: 'center',
@@ -114,27 +113,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   headerImage: {
+    height: 100,
     position: 'absolute',
     width: 300,
-    height: 100
   },
   loginButton : {
-    width: '100%',
     backgroundColor: '#cfedfc',
     paddingHorizontal: 160,
-    paddingVertical: 15
+    paddingVertical: 15,
+    width: '100%',
   },
   searchInput: {
-    fontFamily: 'Roboto',
-    height: 50,
-    width: '80%',
-    padding: 10,
-    margin: 5,
-    flexGrow: 1,
-    fontSize: 23,
-    borderWidth: 2,
     borderColor: '#cfedfc',
     borderRadius: 8,
+    borderWidth: 2,
     color: '#cfedfc',
+    flexGrow: 1,
+    fontFamily: 'Roboto',
+    fontSize: 23,
+    height: 50,
+    margin: 5,
+    padding: 10,
+    width: '80%',
   },
 });

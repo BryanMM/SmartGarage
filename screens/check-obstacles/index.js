@@ -15,15 +15,15 @@ export default class Obstruction extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#ecf0f1',
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
     padding: 8,
   },
   paragraph: {
-    margin: 24,
     fontSize: 18,
     fontWeight: 'bold',
+    margin: 24,
     textAlign: 'center',
   },
 });
