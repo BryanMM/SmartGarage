@@ -1,11 +1,11 @@
 import { createStackNavigator } from 'react-navigation';
 
-import UserLogin from './screens/user-login';
-import Home from './screens/user-home';
-import Obstruction from './screens/check-obstacles';
+import UserLogin from './screens/login';
+import Home from './screens/home';
+import Obstruction from './screens/obstacles-finder';
 import Assistance from './screens/parking-assistance';
-import Schedule from './screens/parking-schedule';
-import Settings from './screens/user-settings';
+import Schedule from './screens/parking-scheduling';
+import Settings from './screens/settings';
 
 const App = createStackNavigator ({
   Login: { screen: UserLogin },

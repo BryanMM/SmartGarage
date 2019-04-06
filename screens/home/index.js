@@ -12,6 +12,7 @@ import IconGarageObstruction from '../../assets/garageObstruction.png';
 import IconParkingAssistance from '../../assets/parkingAssistance.png';
 import IconScheduleParking from '../../assets/schedParking.png';
 import IconSettings from '../../assets/settings.png';
+import IconSmartGarage from '../../assets/smartGarage.png';
 
 class ListItem extends React.PureComponent {
   render() {
@@ -49,19 +50,9 @@ export default class Home extends React.Component {
     this.state = {
       gridItems: [
         {
-          image: IconGarageObstruction,
-          tag: 'Obstruction',
-          title: 'Check for obstacles'
-        },
-        {
-          image: IconParkingAssistance,
-          tag: 'Assistance',
-          title: 'Parking assistance',
-        },
-        {
-          image: IconScheduleParking,
-          tag: 'Schedule',
-          title: 'Automatic \n garage opening'
+          image: IconSmartGarage,
+          tag: 'Garage',
+          title: 'SmartGarage'
         },
         {
           image: IconSettings,
