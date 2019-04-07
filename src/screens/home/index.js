@@ -8,9 +8,6 @@ import {
   View,
 } from 'react-native';
 
-import IconGarageObstruction from '../../assets/garageObstruction.png';
-import IconParkingAssistance from '../../assets/parkingAssistance.png';
-import IconScheduleParking from '../../assets/schedParking.png';
 import IconSettings from '../../assets/settings.png';
 import IconSmartGarage from '../../assets/smartGarageIcon.png';
 

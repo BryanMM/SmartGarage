@@ -11,7 +11,6 @@ import {
 import smartGarage from '../../assets/smartGarage.png';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-
 export default class UserLogin extends React.Component {
   static navigationOptions = {
     header: null,
@@ -56,7 +55,7 @@ export default class UserLogin extends React.Component {
     return (
       <View style={ styles.container }>
         <View style = { styles.header }>
-        <Image style = { styles.headerImage } source = { smartGarage } />  
+        <Image style = { styles.headerImage } source = { smartGarage } />
         </View>
         <Text style={styles.description} />
         <View style={styles.flowRight}>
