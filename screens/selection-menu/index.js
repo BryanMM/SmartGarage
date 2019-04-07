@@ -8,11 +8,9 @@ import {
   View,
 } from 'react-native';
 
-import IconGarageObstruction from '../../assets/garageObstruction.png';
-import IconParkingAssistance from '../../assets/parkingAssistance.png';
-import IconScheduleParking from '../../assets/schedParking.png';
-import IconSettings from '../../assets/settings.png';
-import IconSmartGarage from '../../assets/smartGarageIcon.png';
+import iconGarageObstruction from '../../assets/garageObstruction.png';
+import iconParkingAssistance from '../../assets/parkingAssistance.png';
+import iconScheduleParking from '../../assets/schedParking.png';
 
 class ListItem extends React.PureComponent {
   render() {
@@ -35,14 +33,7 @@ class ListItem extends React.PureComponent {
 }
 export default class Home extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: `Welcome ${navigation.state.params.title}`,
-    headerStyle: {
-      backgroundColor: '#161D25',
-    },
-    headerTintColor: '#cfedfc',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
+      header:null
   });
 
   constructor(props) {
@@ -50,15 +41,20 @@ export default class Home extends React.Component {
     this.state = {
       gridItems: [
         {
-          image: IconSmartGarage,
-          tag: 'SelectionMenu',
-          title: 'SmartGarage'
+          image: iconParkingAssistance,
+          tag: 'parkingAssistance',
+          title: 'Parking \n Assistance'
         },
         {
-          image: IconSettings,
-          tag: 'Settings',
-          title: 'Settings'
-        }
+          image: iconGarageObstruction,
+          tag: 'checkObstructions',
+          title: 'Check for obstacles \n at the entrance'
+        },
+        {
+            image: iconScheduleParking,
+            tag: 'parkingSchedule',
+            title: 'Schedule your parkings!'
+        },
       ]
     };
   }

@@ -1,18 +1,20 @@
 import { createStackNavigator } from 'react-navigation';
 
-import UserLogin from './screens/login';
+import Login from './screens/login';
 import Home from './screens/home';
-import Obstruction from './screens/obstacles-finder';
-import Assistance from './screens/parking-assistance';
-import Schedule from './screens/parking-scheduling';
+import checkObstruction from './screens/obstacles-finder';
+import parkingAssistance from './screens/parking-assistance';
+import parkingSchedule from './screens/parking-scheduling';
 import Settings from './screens/settings';
+import SelectionMenu from './screens/selection-menu'
 
 const App = createStackNavigator ({
-  Login: { screen: UserLogin },
+  Login: { screen: Login },
   Home: { screen: Home },
-  Assistance: { screen: Assistance },
-  Schedule: { screen: Schedule },
-  Obstruction: { screen: Obstruction },
+  SelectionMenu: {screen: SelectionMenu },
+  parkingAssistance: { screen: parkingAssistance },
+  parkingSchedule: { screen: parkingSchedule },
+  checkObstructions: { screen: checkObstruction },
   Settings: { screen: Settings },
 })
 
