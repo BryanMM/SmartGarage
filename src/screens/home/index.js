@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
   },
   homeBackground: {
     alignItems: 'center',
-    backgroundColor: '#cfedfc',
+    backgroundColor: '#ffffff',
     height: '100%',
     paddingTop: 20,
     width: '100%'

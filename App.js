@@ -8,11 +8,11 @@ import Settings from './src/screens/settings';
 import SelectionMenu from './src/screens/selection-menu'
 
 const App = createStackNavigator({
+  parkingSchedule: { screen: parkingSchedule },
   Login: { screen: Login },
   Home: { screen: Home },
   SelectionMenu: { screen: SelectionMenu },
   parkingAssistance: { screen: parkingAssistance },
-  parkingSchedule: { screen: parkingSchedule },
   checkObstructions: { screen: checkObstruction },
   Settings: { screen: Settings },
 })

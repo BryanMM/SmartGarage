@@ -57,13 +57,12 @@ export default class UserLogin extends React.Component {
         <View style = { styles.header }>
         <Image style = { styles.headerImage } source = { smartGarage } />
         </View>
-        <Text style={styles.description} />
         <View style={styles.flowRight}>
           <TextInput
             onChange={this._onUserTextChanged}
             placeholder=" Type here your email "
             placeholderTextColor="#cfedfc"
-            style={styles.searchInput}
+            style={styles.textInput}
             underlineColorAndroid={'transparent'}
             value={this.state.userEmail}
           />
@@ -71,7 +70,7 @@ export default class UserLogin extends React.Component {
             onChange={this._onPasswordTextChanged}
             placeholder="Type here your password"
             placeholderTextColor="#cfedfc"
-            style={styles.searchInput}
+            style={styles.textInput}
             underlineColorAndroid={'transparent'}
             value={this.state.userPassword}
           />
@@ -88,23 +87,11 @@ export default class UserLogin extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  buttonText :{
-    color: '#161D25',
-    fontFamily: 'Roboto',
-    fontWeight: '700',
-    textAlign: 'center',
-  },
   container : {
     alignItems: 'center',
     backgroundColor: '#161D25',
     height: '100%',
     width: '100%',
-  },
-  flowRight : {
-    alignItems: 'center',
-    alignSelf: 'stretch',
-    color: '#656565',
-    flexDirection: 'column',
   },
   header : {
     alignItems: 'center',
@@ -116,13 +103,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 300,
   },
-  loginButton : {
-    backgroundColor: '#cfedfc',
-    paddingHorizontal: 160,
-    paddingVertical: 15,
-    width: '100%',
+  flowRight : {
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    color: '#656565',
+    flexDirection: 'column',
   },
-  searchInput: {
+  textInput: {
     borderColor: '#cfedfc',
     borderRadius: 8,
     borderWidth: 2,
@@ -134,5 +121,17 @@ const styles = StyleSheet.create({
     margin: 5,
     padding: 10,
     width: '80%',
+  },
+  loginButton : {
+    backgroundColor: '#cfedfc',
+    paddingHorizontal: 160,
+    paddingVertical: 15,
+    width: '100%',
+  },
+  buttonText :{
+    color: '#161D25',
+    fontFamily: 'Roboto',
+    fontWeight: '700',
+    textAlign: 'center',
   },
 });
