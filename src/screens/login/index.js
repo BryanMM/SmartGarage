@@ -26,14 +26,27 @@ export default class UserLogin extends React.Component {
   }
 
   _onLoginPressed = () => {
-    if (
-      this.state.userEmail == 'Bryan' &&
-      this.state.userPassword == ''
-    ) {
-      this.props.navigation.navigate('Home', { title: this.state.userEmail } );
-    } else {
-      alert('Usuario y/o contraseña incorrecta, intente de nuevo');
-    }
+    fetch('http://192.168.8.101:4000/users/authenticate', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: this.state.userEmail,
+        password: this.state.userPassword
+      }),
+    }).then((response) => {
+      if (response.ok == true){
+        this.props.navigation.navigate('Home', { title: this.state.userEmail });
+      }else{
+        alert('Username or password is incorrect')
+      }
+    })
+      .catch((error) => {
+        alert(error);
+      });
+
   };
 
   _onUserTextChanged = event => {
@@ -60,15 +73,16 @@ export default class UserLogin extends React.Component {
         <View style={styles.flowRight}>
           <TextInput
             onChange={this._onUserTextChanged}
-            placeholder=" Type here your email "
+            placeholder="Email "
             placeholderTextColor="#cfedfc"
             style={styles.textInput}
             underlineColorAndroid={'transparent'}
             value={this.state.userEmail}
           />
           <TextInput
+            secureTextEntry={true}
             onChange={this._onPasswordTextChanged}
-            placeholder="Type here your password"
+            placeholder="Password"
             placeholderTextColor="#cfedfc"
             style={styles.textInput}
             underlineColorAndroid={'transparent'}

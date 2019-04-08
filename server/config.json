@@ -1,0 +1,4 @@
+﻿{
+    "connectionString": "mongodb+srv://ronnyquesada:ronnyquesada@soa4id-l7ibz.mongodb.net/test?retryWrites=true",
+    "secret": "PrivateKey"
+}
