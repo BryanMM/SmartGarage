@@ -36,11 +36,13 @@ export default class UserLogin extends React.Component {
         username: this.state.userEmail,
         password: this.state.userPassword
       }),
-    }).then((response) => response.json())
-      .then((responseJson) => {
-        alert(responseJson);
+    }).then((response) => {
+      if (response.ok == true){
         this.props.navigation.navigate('Home', { title: this.state.userEmail });
-      })
+      }else{
+        alert('Username or password is incorrect')
+      }
+    })
       .catch((error) => {
         alert(error);
       });
