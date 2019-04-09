@@ -9,13 +9,13 @@ import Settings from './src/screens/settings';
 import SelectionMenu from './src/screens/selection-menu'
 
 const App = createStackNavigator({
-  Register: { screen:Register },
   Login: { screen: Login },
   Home: { screen: Home },
   SelectionMenu: { screen: SelectionMenu },
   parkingAssistance: { screen: parkingAssistance },
   checkObstructions: { screen: checkObstruction },
   parkingSchedule: { screen: parkingSchedule },
+  Register: { screen:Register },
   Settings: { screen: Settings },
 })
 
