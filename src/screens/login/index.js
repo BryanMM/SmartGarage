@@ -27,7 +27,7 @@ export default class UserLogin extends React.Component {
   }
 
   _onLoginPressed = () => {
-    fetch('http://192.168.43.65:4000/users/authenticate', {
+    fetch('http://localhost:4000/users/authenticate', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -67,6 +67,10 @@ export default class UserLogin extends React.Component {
     });
   };
 
+  _onRegisterPressed = event => {
+    this.props.navigation.navigate('Register');
+  }
+
   render() {
     const spinner = this.state.isLoading ? (
       <ActivityIndicator size="large" />
@@ -98,6 +102,10 @@ export default class UserLogin extends React.Component {
         <TouchableOpacity style = {styles.loginButton}
                             onPress = {this._onLoginPressed} >
               <Text style = {styles.buttonText}>LOGIN</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style = {styles.loginButton}
+                            onPress = {this._onLoginPressed} >
+              <Text style = {styles.buttonText}>REGISTER</Text>
         </TouchableOpacity>
         {spinner}
         <Text style={styles.description}>{this.state.message}</Text>
@@ -146,7 +154,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#cfedfc',
     paddingHorizontal: 160,
     paddingVertical: 15,
-    width: '100%',
+    width: '90%',
   },
   buttonText :{
     color: '#161D25',

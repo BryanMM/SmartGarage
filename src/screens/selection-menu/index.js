@@ -11,6 +11,7 @@ import {
 import iconGarageObstruction from '../../assets/garageObstruction.png';
 import iconParkingAssistance from '../../assets/parkingAssistance.png';
 import iconScheduleParking from '../../assets/schedParking.png';
+import iconGarageDoor from '../../assets/garageDoor.png'
 
 class ListItem extends React.PureComponent {
   render() {
@@ -51,10 +52,15 @@ export default class Home extends React.Component {
           title: 'Check for obstacles \n at the entrance'
         },
         {
-            image: iconScheduleParking,
-            tag: 'parkingSchedule',
-            title: 'Schedule your parkings!'
+          image: iconScheduleParking,
+          tag: 'parkingSchedule',
+          title: 'Schedule your parkings!'
         },
+        {
+          image: iconGarageDoor,
+          tag: 'openGarage',
+          title: 'Open the garage\'s door'
+        }
       ]
     };
   }
