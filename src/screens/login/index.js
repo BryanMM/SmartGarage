@@ -11,6 +11,7 @@ import {
 import smartGarage from '../../assets/smartGarage.png';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+
 export default class UserLogin extends React.Component {
   static navigationOptions = {
     header: null,
@@ -26,7 +27,7 @@ export default class UserLogin extends React.Component {
   }
 
   _onLoginPressed = () => {
-    fetch('http://192.168.8.101:4000/users/authenticate', {
+    fetch('http://192.168.43.65:4000/users/authenticate', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -44,6 +45,7 @@ export default class UserLogin extends React.Component {
       }
     })
       .catch((error) => {
+        console.log(error)
         alert(error);
       });
 

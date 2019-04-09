@@ -14,6 +14,11 @@ export default class ParkingSchedulingScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    markedDates = {};
+  }
+
+  _onDayPress(day) {
+
   }
 
   render() {
@@ -44,8 +49,8 @@ export default class ParkingSchedulingScreen extends Component {
               }
             }
           }}
-          markedDates={{
-          }}
+          markedDates={
+          this.props.markedDates}
           hideArrows={false}
         />
 
