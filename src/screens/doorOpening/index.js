@@ -1,14 +1,6 @@
 import * as React from 'react';
-<<<<<<< HEAD
-import { Text, View, StyleSheet, TouchableHighlight } from 'react-native';
-import init from 'react_native_mqtt';
-import { AsyncStorage } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-
-=======
 import { Text, View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
->>>>>>> 90a1b1b7ed3d4c3653e60b486b2618d73d1c2992
 
 export default class App extends React.Component {
 
@@ -66,11 +58,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-<<<<<<< HEAD
         <TouchableOpacity style={styles.gridItem}
-=======
-        <TouchableOpacity style={styles.container}
->>>>>>> 90a1b1b7ed3d4c3653e60b486b2618d73d1c2992
           onPress={this._onPress}>
         </TouchableOpacity>
       </View>
