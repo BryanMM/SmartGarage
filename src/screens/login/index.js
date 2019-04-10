@@ -11,6 +11,7 @@ import {
 import smartGarage from '../../assets/smartGarage.png';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+
 export default class UserLogin extends React.Component {
   static navigationOptions = {
     header: null,
@@ -26,7 +27,7 @@ export default class UserLogin extends React.Component {
   }
 
   _onLoginPressed = () => {
-    fetch('http://192.168.8.101:4000/users/authenticate', {
+    fetch('http://localhost:4000/users/authenticate', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -40,14 +41,15 @@ export default class UserLogin extends React.Component {
 
       return response.text().then(text => {
         const data = text && JSON.parse(text);
-        if (response.ok == true){
+        if (response.ok == true) {
           this.props.navigation.navigate('Home', { title: this.state.userEmail });
-        }else{
+        } else {
           alert(data.message)
         }
       });
     })
       .catch((error) => {
+        console.log(error)
         alert(error);
       });
 
@@ -65,38 +67,43 @@ export default class UserLogin extends React.Component {
     });
   };
 
+  _onRegisterPressed = event => {
+    this.props.navigation.navigate('Register');
+  }
+
   render() {
     const spinner = this.state.isLoading ? (
       <ActivityIndicator size="large" />
     ) : null;
     return (
-      <View style={ styles.container }>
-        <View style = { styles.header }>
-        <Image style = { styles.headerImage } source = { smartGarage } />
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Image style={styles.headerImage} source={smartGarage} />
         </View>
-        <View style={styles.flowRight}>
-          <TextInput
-            onChange={this._onUserTextChanged}
-            placeholder="Email "
-            placeholderTextColor="#cfedfc"
-            style={styles.textInput}
-            underlineColorAndroid={'transparent'}
-            value={this.state.userEmail}
-          />
-          <TextInput
-            secureTextEntry={true}
-            onChange={this._onPasswordTextChanged}
-            placeholder="Password"
-            placeholderTextColor="#cfedfc"
-            style={styles.textInput}
-            underlineColorAndroid={'transparent'}
-            value={this.state.userPassword}
-          />
-        </View>
-        <TouchableOpacity style = {styles.loginButton}
-                            onPress = {this._onLoginPressed} >
-              <Text style = {styles.buttonText}>LOGIN</Text>
+        <TextInput
+          onChange={this._onUserTextChanged}
+          placeholder="Email "
+          placeholderTextColor="#cfedfc"
+          style={styles.textInput}
+          underlineColorAndroid={'transparent'}
+          value={this.state.userEmail}
+        />
+        <TextInput
+          secureTextEntry={true}
+          onChange={this._onPasswordTextChanged}
+          placeholder="Password"
+          placeholderTextColor="#cfedfc"
+          style={styles.textInput}
+          underlineColorAndroid={'transparent'}
+          value={this.state.userPassword}
+        />
+        <TouchableOpacity style={styles.loginButton}
+          onPress={this._onLoginPressed} >
+          <Text style={styles.buttonText}>LOGIN</Text>
         </TouchableOpacity>
+        <Text style={styles.registerText} onPress={this._onRegisterPressed}>
+          You don't have an account? Register now!
+        </Text>
         {spinner}
         <Text style={styles.description}>{this.state.message}</Text>
       </View>
@@ -105,13 +112,13 @@ export default class UserLogin extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container : {
-    alignItems: 'center',
+  container: {
+    alignSelf: 'stretch',
     backgroundColor: '#161D25',
     height: '100%',
     width: '100%',
   },
-  header : {
+  header: {
     alignItems: 'center',
     flexGrow: 1,
     justifyContent: 'center'
@@ -121,35 +128,34 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 300,
   },
-  flowRight : {
-    alignItems: 'center',
-    alignSelf: 'stretch',
-    color: '#656565',
-    flexDirection: 'column',
-  },
   textInput: {
-    borderColor: '#cfedfc',
-    borderRadius: 8,
-    borderWidth: 2,
+    alignSelf: 'stretch',
+    borderBottomColor: '#cfedfc',
+    borderBottomWidth: 1,
     color: '#cfedfc',
-    flexGrow: 1,
     fontFamily: 'Roboto',
-    fontSize: 23,
-    height: 50,
+    fontSize: 18,
+    height: 40,
     margin: 5,
-    padding: 10,
-    width: '80%',
+    marginTop: 5,
   },
-  loginButton : {
+  loginButton: {
+    alignSelf: 'stretch',
     backgroundColor: '#cfedfc',
     paddingHorizontal: 160,
+    paddingTop: 8,
     paddingVertical: 15,
-    width: '100%',
   },
-  buttonText :{
+  buttonText: {
     color: '#161D25',
     fontFamily: 'Roboto',
-    fontWeight: '700',
+    fontSize: 18,
     textAlign: 'center',
   },
+  registerText: {
+    color: '#cfedfc',
+    fontSize: 14,
+    marginTop: 10,
+    textDecorationLine: 'underline'
+  }
 });
