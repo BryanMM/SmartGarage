@@ -8,13 +8,13 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableHighlight style={styles.button}
+        <TouchableHighlight style={styles.container}
           onPress={this._onPress}>
           <View style={styles.gridItem} backgroundColor='#7dceff'>
             <View>
-              <Text style={styles.title}> {item.title} </Text>
+              <Text style={styles.title}> {item.title} coso</Text>
             </View>
-            <Image style={styles.thumbnail} source={item.image} />
+
             <View />
           </View>
         </TouchableHighlight>
