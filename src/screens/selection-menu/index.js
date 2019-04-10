@@ -14,7 +14,6 @@ import iconScheduleParking from '../../assets/schedParking.png';
 import iconGarageDoor from '../../assets/garageDoor.png'
 
 class ListItem extends React.PureComponent {
-
   render() {
     const { item } = this.props
     const { navigation } = this.props
