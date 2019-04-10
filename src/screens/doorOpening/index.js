@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class App extends React.Component {
   _onPress() {
@@ -8,16 +9,9 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <TouchableHighlight style={styles.container}
+        <TouchableOpacity style={styles.container}
           onPress={this._onPress}>
-          <View style={styles.gridItem} backgroundColor='#7dceff'>
-            <View>
-              <Text style={styles.title}> {item.title} coso</Text>
-            </View>
-
-            <View />
-          </View>
-        </TouchableHighlight>
+        </TouchableOpacity>
       </View>
     );
   }
