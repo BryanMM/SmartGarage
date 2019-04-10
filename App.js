@@ -2,6 +2,7 @@ import { createStackNavigator } from 'react-navigation';
 import Login from './src/screens/login';
 import Home from './src/screens/home';
 import checkObstruction from './src/screens/obstacles-finder';
+import openGarage from './src/screens/doorOpening';
 import parkingAssistance from './src/screens/parking-assistance';
 import parkingSchedule from './src/screens/parking-scheduling';
 import Register from './src/screens/registration';
@@ -14,6 +15,7 @@ const App = createStackNavigator({
   SelectionMenu: { screen: SelectionMenu },
   parkingAssistance: { screen: parkingAssistance },
   checkObstructions: { screen: checkObstruction },
+  openGarage: { screen:openGarage },
   parkingSchedule: { screen: parkingSchedule },
   Register: { screen:Register },
   Settings: { screen: Settings },

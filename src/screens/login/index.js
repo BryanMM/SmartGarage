@@ -27,7 +27,13 @@ export default class UserLogin extends React.Component {
   }
 
   _onLoginPressed = () => {
-    fetch('http://localhost:4000/users/authenticate', {
+   alert(
+      JSON.stringify({
+        username: this.state.userEmail,
+        password: this.state.userPassword
+      }),
+    )
+    fetch('http://192.168.105.17:4000/users/authenticate', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -37,8 +43,8 @@ export default class UserLogin extends React.Component {
         username: this.state.userEmail,
         password: this.state.userPassword
       }),
-    }).then((response) => {
-
+    })
+    .then((response) => {
       return response.text().then(text => {
         const data = text && JSON.parse(text);
         if (response.ok == true) {

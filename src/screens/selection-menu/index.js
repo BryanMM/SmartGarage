@@ -14,10 +14,10 @@ import iconScheduleParking from '../../assets/schedParking.png';
 import iconGarageDoor from '../../assets/garageDoor.png'
 
 class ListItem extends React.PureComponent {
+
   render() {
     const { item } = this.props
     const { navigation } = this.props
-
     return (
       <TouchableHighlight style={styles.gridItem}
         onPress={() => navigation.navigate(item.tag)}>
@@ -29,7 +29,7 @@ class ListItem extends React.PureComponent {
           <View />
         </View>
       </TouchableHighlight>
-    )
+      )
   }
 }
 export default class Home extends React.Component {
