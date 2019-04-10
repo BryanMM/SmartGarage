@@ -27,13 +27,7 @@ export default class UserLogin extends React.Component {
   }
 
   _onLoginPressed = () => {
-   alert(
-      JSON.stringify({
-        username: this.state.userEmail,
-        password: this.state.userPassword
-      }),
-    )
-    fetch('http://192.168.105.17:4000/users/authenticate', {
+    fetch('http://192.168.8.102:4000/users/authenticate', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -44,15 +38,15 @@ export default class UserLogin extends React.Component {
         password: this.state.userPassword
       }),
     })
-    .then((response) => {
-      return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        if (response.ok == true) {
-          this.props.navigation.navigate('Home', { title: this.state.userEmail });
-        } else {
-          alert(data.message)
-        }
-      });
+    .then(async (response) => {
+      const text = await response.text();
+      const data = text && JSON.parse(text);
+      if (response.ok == true) {
+        this.props.navigation.navigate('Home', { title: this.state.userEmail });
+      }
+      else {
+        alert(data.message);
+      }
     })
       .catch((error) => {
         console.log(error)
