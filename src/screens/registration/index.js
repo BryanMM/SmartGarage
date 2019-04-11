@@ -56,16 +56,16 @@ export default class App extends React.Component {
         password: this.state.userPassword,
 
       }),
-    }).then((response) => {
+    }).then(async (response) => {
 
-      return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        if (response.ok == true) {
-          this.props.navigation.navigate('Home', { title: this.state.userEmail });
-        } else {
-          alert(data.message)
-        }
-      });
+      const text = await response.text();
+      const data = text && JSON.parse(text);
+      if (response.ok == true) {
+        this.props.navigation.navigate('Home', { title: this.state.userEmail });
+      }
+      else {
+        alert(data.message);
+      }
     })
       .catch((error) => {
         console.log(error)

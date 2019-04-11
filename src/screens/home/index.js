@@ -109,8 +109,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 50,
     borderWidth: 1.5,
-    height: 100,
-    width: 130
+    height: 50,
+    width: 60
   },
   homeBackground: {
     alignItems: 'center',

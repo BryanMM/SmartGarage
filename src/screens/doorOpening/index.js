@@ -2,6 +2,9 @@ import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import init from 'react_native_mqtt';
+import { AsyncStorage } from 'react-native';
+
 export default class App extends React.Component {
 
 
@@ -19,7 +22,8 @@ export default class App extends React.Component {
       console.log("onConnect");
 
       const topic = "/light/in"
-      client.subscribe(topic);
+      const topicdos = "/light/out"
+      client.subscribe(topicdos);
       message = new Paho.MQTT.Message("0");
       message.destinationName = topic;
       client.send(message);

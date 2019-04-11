@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
+import init from 'react_native_mqtt';
+import { AsyncStorage } from 'react-native';
+
 export default class App extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     header:null
@@ -62,7 +65,7 @@ export default class App extends React.Component {
     return client
   }
   render() {
-    _onStart();
+    this._onStart();
     return (
       <View style={styles.container}>
         <Text style={styles.paragraph}>
