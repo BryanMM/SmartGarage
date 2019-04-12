@@ -4,17 +4,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import init from 'react_native_mqtt';
 import { AsyncStorage } from 'react-native';
 
-<<<<<<< HEAD
 export default class DoorOpening extends React.Component {
-=======
-import iconGarageOpen from '../../assets/openGarage.png';
-import iconGarageClosed from '../../assets/closedGarage.png';
-
-export default class App extends React.Component {
-  static navigationOptions = ({
-    header: null
-  });
->>>>>>> 1fe8fd2fdcbd0aa949691a991e9b26c21aadae25
 
   _onPressClose() {
     init({
