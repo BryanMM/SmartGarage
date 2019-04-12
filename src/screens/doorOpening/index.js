@@ -127,7 +127,7 @@ export default class App extends React.Component {
             onPress={this._onPressOpen}>
             <View style={styles.gridItem} backgroundColor='#7dceff'>
               <View>
-                <Text style={styles.title}> Open the garage's door </Text>
+                <Text style={styles.title}>Open the garage's door</Text>
               </View>
               <Image style={styles.thumbnail} source={iconGarageOpen} />
               <View />
