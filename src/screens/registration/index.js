@@ -4,7 +4,7 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default class Register extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    header: null
+    header:null
   });
 
   constructor(props) {
@@ -25,15 +25,9 @@ export default class Register extends React.Component {
     });
   };
 
-  _onNameTextChanged = event => {
+  _onEmailTextChanged = event => {
     this.setState({
-      userFirstName: event.nativeEvent.text,
-    });
-  };
-
-  _onLastNameTextChanged = event => {
-    this.setState({
-      userLastName: event.nativeEvent.text,
+      userEmail: event.nativeEvent.text,
     });
   };
 
@@ -50,71 +44,77 @@ export default class Register extends React.Component {
   };
 
   _onRegisterPressed = () => {
-    if (this.state.userPassword == this.state.repeatedPassword) {
-      fetch('http://192.168.8.100:3000/users/register', {
-        method: 'POST',
-        headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          username: this.state.userName,
-          password: this.state.userPassword,
-          firstName: this.state.userFirstName,
-          lastName: this.state.userLastName
-        }),
-      }).then(async (response) => {
+    fetch('http://localhost:4000/users/register', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: this.state.userName,
+        lastname: this.state.userLastName,
+        password: this.state.userPassword,
 
-        const text = await response.text();
-        const data = text && JSON.parse(text);
-        if (response.ok == true) {
-          this.props.navigation.navigate('Login', { title: this.state.userName });
-        }
-        else {
-          alert(data.message);
-        }
-      })
-        .catch((error) => {
-          console.log(error)
-          alert(error);
-        });
-    } else {
-      alert("Passwords do not match")
-    }
+      }),
+    }).then(async (response) => {
+
+      const text = await response.text();
+      const data = text && JSON.parse(text);
+      if (response.ok == true) {
+        this.props.navigation.navigate('Home', { title: this.state.userEmail });
+      }
+      else {
+        alert(data.message);
+      }
+    })
+      .catch((error) => {
+        console.log(error)
+        alert(error);
+      });
+
   };
 
   render() {
     return (
       <View style={styles.container}>
+        <View style={styles.banner}>
+          <Text style={styles.bannerText}>Pick a date and schedule your parkings</Text>
+        </View>
         <TextInput style={styles.textInput}
-          placeholder="User name"
+          placeholder="Type your user name here"
           underlineColorAndroid={'transparent'}
           onChange={this._onUserTextChanged}
-          value={this.state.userName} />
+          value={this.state.userFirstNameName}/>
         <TextInput style={styles.textInput}
-          placeholder="First name"
+          placeholder="Type your first name here"
           underlineColorAndroid={'transparent'}
           onChange={this._onNameTextChanged}
-          value={this.state.userFirstName} />
+          value={this.state.userLastName}/>
         <TextInput style={styles.textInput}
-          placeholder="Last name"
+          placeholder="Type your last name here"
           underlineColorAndroid={'transparent'}
           onChange={this._onLastNameTextChanged}
-          value={this.state.userLastName} />
+          value={this.state.userLastName}/>
         <TextInput style={styles.textInput}
           secureTextEntry={true}
-          placeholder="Password"
+          placeholder="Type your password here"
           underlineColorAndroid={'transparent'}
           onChange={this._onPasswordTextChanged}
-          value={this.state.userPassword} />
+          value={this.state.userPassword}/>
         <TextInput style={styles.textInput}
           secureTextEntry={true}
-          placeholder="Repeat password"
+          placeholder="Re-type your password here"
           underlineColorAndroid={'transparent'}
           onChange={this._onRepeatedPasswordTextChanged}
+<<<<<<< HEAD
           value={this.state.repeatedPassword} />
         <TouchableOpacity style={styles.registerButton} onPress={this._onRegisterPressed}>
           <Text style={styles.buttonText}>REGISTER</Text>
+=======
+          value={this.state.repeatedPassword}/>
+        <TouchableOpacity style = {styles.registerButton} onPress = {this._onRegisterPressed}>
+              <Text style = {styles.buttonText}>Register</Text>
+>>>>>>> 1fe8fd2fdcbd0aa949691a991e9b26c21aadae25
         </TouchableOpacity>
       </View>
     );
@@ -151,16 +151,21 @@ const styles = StyleSheet.create({
     margin: 5,
     marginTop: 5,
   },
-  registerButton: {
+  registerButton : {
     alignSelf: 'stretch',
     backgroundColor: '#161D25',
+<<<<<<< HEAD
     paddingHorizontal: 130,
     paddingVertical: 10,
+=======
+    paddingHorizontal: 160,
+    paddingVertical: 15,
+>>>>>>> 1fe8fd2fdcbd0aa949691a991e9b26c21aadae25
   },
-  buttonText: {
+  buttonText :{
     color: 'white',
     fontFamily: 'Roboto',
-    fontSize: 18,
+    fontSize: 20,
     textAlign: 'center',
   },
 });
