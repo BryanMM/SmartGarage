@@ -1,21 +1,22 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 import init from 'react_native_mqtt';
 import { AsyncStorage } from 'react-native';
 
-export default class App extends React.Component {
+export default class ParkingAssistance extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    header:null
+    header: null
   });
 
   constructor(props) {
     super(props);
     this.state = {
       status: '',
+      bgColor: 'green'
     };
   }
-  _onStart () {
+  _onStart() {
     init({
       size: 10000,
       storageBackend: AsyncStorage,
@@ -64,13 +65,24 @@ export default class App extends React.Component {
 
     return client
   }
+
+  _handleClick = () => {
+    if(this.state.bgColor == 'red'){
+      this.setState({ bgColor: 'green' })
+    }else{
+      this.setState({ bgColor: 'red' })
+    }
+    
+  }
+
   render() {
     this._onStart();
     return (
       <View style={styles.container}>
-        <Text style={styles.paragraph}>
-
-        </Text>
+        <TouchableOpacity style={{ backgroundColor: this.state.bgColor }}
+          onPress={this._handleClick}>
+          <Text style={styles.buttonText}>Top</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -87,6 +99,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     margin: 24,
+    textAlign: 'center',
+  },
+  buttonText: {
+    color: '#161D25',
+    fontFamily: 'Roboto',
+    fontSize: 18,
     textAlign: 'center',
   },
 });

@@ -1,57 +1,100 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity
+} from 'react-native';
 
-export default class App extends React.Component {
-  _onPress() {
+export default class Settings extends React.Component {
+  static navigationOptions = ({ navigation }) => ({
+    headerStyle: {
+      backgroundColor: '#161D25'
+    },
+    headerTintColor: '#cfedfc'
+  });
 
+  _onLogout = () => {
+    this.props.navigation.navigate('Login');
   }
+
   render() {
+    const { navigation } = this.props
     return (
       <View style={styles.container}>
-        <TouchableHighlight style={styles.button}
-          onPress={this._onPress}>
-          <View style={styles.gridItem} backgroundColor='#7dceff'>
-            <View>
-              <Text style={styles.title}> {item.title} </Text>
-            </View>
-            <Image style={styles.thumbnail} source={item.image} />
-            <View />
+        <View style={styles.header}></View>
+        <Image style={styles.avatar} source={{ uri: 'https://bootdey.com/img/Content/avatar/avatar6.png' }} />
+        <View style={styles.body}>
+          <View style={styles.bodyContent}>
+            <Text style={styles.name}>{navigation.state.params.UserInfo.username}</Text>
+            <Text style={styles.info}>{navigation.state.params.UserInfo.firstName + " " + navigation.state.params.UserInfo.lastName}</Text>
+
+            <TouchableOpacity style={styles.buttonContainer}
+              onPress={this._onLogout}>
+              <Text style={styles.buttonText}>Logout</Text>
+            </TouchableOpacity>
           </View>
-        </TouchableHighlight>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  gridItem: {
-    alignItems: 'center',
-    borderRadius: 300,
-    borderWidth: 2,
-    height: 170,
-    justifyContent: 'center',
-    margin: 15,
-    width: 170,
+  header: {
+    backgroundColor: "#161D25",
+    height: 200,
   },
-  container: {
-    backgroundColor: '#ecf0f1',
-    flex: 1,
-    justifyContent: 'center',
-    padding: 8,
-  },
-  title: {
-    color: '#161D25',
-    fontFamily: 'Roboto',
-    fontSize: 12,
-    fontWeight: 'bold',
-    paddingBottom: 15,
-    textAlign: 'center',
-  },
-  thumbnail: {
+  avatar: {
+    width: 130,
+    height: 130,
+    borderRadius: 63,
+    borderWidth: 4,
+    borderColor: "white",
+    marginBottom: 10,
     alignSelf: 'center',
-    borderRadius: 50,
-    borderWidth: 1.5,
-    height: 100,
-    width: 130
+    position: 'absolute',
+    marginTop: 130
   },
+  name: {
+    fontSize: 22,
+    color: "#FFFFFF",
+    fontWeight: '600',
+  },
+  body: {
+    marginTop: 40,
+  },
+  bodyContent: {
+    flex: 1,
+    alignItems: 'center',
+    padding: 30,
+  },
+  name: {
+    fontSize: 28,
+    color: "#000000",
+    fontWeight: "600"
+  },
+  info: {
+    fontSize: 16,
+    color: "#000000",
+    fontWeight: '600',
+  },
+  buttonContainer: {
+    marginTop: 10,
+    height: 45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 20,
+    width: 250,
+    borderRadius: 30,
+    backgroundColor: "#161D25",
+  },
+  buttonText: {
+    color: '#FFFFFF',
+    fontFamily: 'Roboto',
+    fontSize: 18,
+    textAlign: 'center',
+  }
 });

@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import {Calendar} from 'react-native-calendars';
 
-export default class ParkingSchedulingScreen extends Component {
+export default class ParkingScheduling extends Component {
   static navigationOptions = ({
     header: null
   });

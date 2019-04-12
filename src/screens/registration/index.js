@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
-export default class App extends React.Component {
+export default class Register extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     header: null
   });
@@ -114,7 +114,7 @@ export default class App extends React.Component {
           onChange={this._onRepeatedPasswordTextChanged}
           value={this.state.repeatedPassword} />
         <TouchableOpacity style={styles.registerButton} onPress={this._onRegisterPressed}>
-          <Text style={styles.buttonText}>Register</Text>
+          <Text style={styles.buttonText}>REGISTER</Text>
         </TouchableOpacity>
       </View>
     );
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
   registerButton: {
     alignSelf: 'stretch',
     backgroundColor: '#161D25',
-    paddingHorizontal: 140,
+    paddingHorizontal: 130,
     paddingVertical: 10,
   },
   buttonText: {

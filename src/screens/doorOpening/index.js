@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import init from 'react_native_mqtt';
 import { AsyncStorage } from 'react-native';
 
-export default class App extends React.Component {
+export default class DoorOpening extends React.Component {
 
 
   _onPress() {

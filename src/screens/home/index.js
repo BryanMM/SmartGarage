@@ -18,7 +18,7 @@ class ListItem extends React.PureComponent {
 
     return (
       <TouchableHighlight style={styles.gridItem}
-        onPress={() => navigation.navigate(item.tag)}>
+        onPress={() => navigation.navigate(item.tag, { UserInfo: navigation.state.params.UserInfo })}>
         <View style={styles.gridItem} backgroundColor='#7dceff'>
           <View>
             <Text style={styles.title}> {item.title} </Text>
@@ -31,16 +31,6 @@ class ListItem extends React.PureComponent {
   }
 }
 export default class Home extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    title: `Welcome ${navigation.state.params.title}`,
-    headerStyle: {
-      backgroundColor: '#161D25',
-    },
-    headerTintColor: '#cfedfc',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  });
 
   constructor(props) {
     super(props);

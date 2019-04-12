@@ -42,7 +42,7 @@ export default class UserLogin extends React.Component {
       const text = await response.text();
       const data = text && JSON.parse(text);
       if (response.ok == true) {
-        this.props.navigation.navigate('Home', { title: this.state.userEmail });
+        this.props.navigation.navigate('Home', { UserInfo: data });
       }
       else {
         alert(data.message);
@@ -82,7 +82,7 @@ export default class UserLogin extends React.Component {
         </View>
         <TextInput
           onChange={this._onUserTextChanged}
-          placeholder="Email "
+          placeholder="User name "
           placeholderTextColor="#cfedfc"
           style={styles.textInput}
           underlineColorAndroid={'transparent'}
