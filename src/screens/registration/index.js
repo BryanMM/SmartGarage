@@ -106,15 +106,9 @@ export default class Register extends React.Component {
           placeholder="Re-type your password here"
           underlineColorAndroid={'transparent'}
           onChange={this._onRepeatedPasswordTextChanged}
-<<<<<<< HEAD
-          value={this.state.repeatedPassword} />
-        <TouchableOpacity style={styles.registerButton} onPress={this._onRegisterPressed}>
-          <Text style={styles.buttonText}>REGISTER</Text>
-=======
           value={this.state.repeatedPassword}/>
         <TouchableOpacity style = {styles.registerButton} onPress = {this._onRegisterPressed}>
               <Text style = {styles.buttonText}>Register</Text>
->>>>>>> 1fe8fd2fdcbd0aa949691a991e9b26c21aadae25
         </TouchableOpacity>
       </View>
     );
@@ -154,13 +148,8 @@ const styles = StyleSheet.create({
   registerButton : {
     alignSelf: 'stretch',
     backgroundColor: '#161D25',
-<<<<<<< HEAD
-    paddingHorizontal: 130,
-    paddingVertical: 10,
-=======
     paddingHorizontal: 160,
     paddingVertical: 15,
->>>>>>> 1fe8fd2fdcbd0aa949691a991e9b26c21aadae25
   },
   buttonText :{
     color: 'white',
