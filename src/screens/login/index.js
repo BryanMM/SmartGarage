@@ -11,7 +11,6 @@ import {
 
 import smartGarage from '../../assets/smartGarage.png';
 
-
 export default class UserLogin extends React.Component {
   static navigationOptions = {
     header: null,

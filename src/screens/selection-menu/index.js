@@ -92,6 +92,17 @@ export default class Home extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  homeBackground: {
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    height: '100%',
+    paddingTop: 20,
+    width: '100%'
+  },
+  grid: {
+    flex: 1,
+    justifyContent: 'center',
+  },
   gridItem: {
     alignItems: 'center',
     borderRadius: 300,
@@ -115,16 +126,5 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     height: 100,
     width: 130
-  },
-  homeBackground: {
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    height: '100%',
-    paddingTop: 20,
-    width: '100%'
-  },
-  grid: {
-    flex: 1,
-    justifyContent: 'center',
   },
 });

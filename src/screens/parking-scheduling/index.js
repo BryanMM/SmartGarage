@@ -21,8 +21,7 @@ export default class ParkingScheduling extends Component {
     });
     this.props.navigation.navigate('dateScheduling', { schedulingDay: day })
   }
-
-
+  
   render() {
     return (
       <View style={styles.container}>

@@ -162,12 +162,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 8,
   },
-  paragraph: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    margin: 24,
-    textAlign: 'center',
-  },
   buttonText: {
     color: '#161D25',
     fontFamily: 'Roboto',

@@ -13,6 +13,9 @@ import iconGarageClosed from '../../assets/closedGarage.png';
 import iconGarageOpen from '../../assets/openGarage.png';
 
 export default class DoorOpening extends React.Component {
+  static navigationOptions = ({ navigation }) => ({
+    header: null
+  });
   static navigationOptions = {
     header: null,
   };

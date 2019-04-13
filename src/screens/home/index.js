@@ -31,7 +31,9 @@ class ListItem extends React.PureComponent {
   }
 }
 export default class Home extends React.Component {
-
+  static navigationOptions = ({ navigation }) => ({
+    header: null
+  });
   constructor(props) {
     super(props);
     this.state = {
@@ -78,6 +80,17 @@ export default class Home extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  homeBackground: {
+    alignItems: 'center',
+    backgroundColor: '#ffffff',
+    height: '100%',
+    paddingTop: 20,
+    width: '100%'
+  },
+  grid: {
+    flex: 1,
+    justifyContent: 'center',
+  },
   gridItem: {
     alignItems: 'center',
     borderRadius: 300,
@@ -101,16 +114,5 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     height: 50,
     width: 60
-  },
-  homeBackground: {
-    alignItems: 'center',
-    backgroundColor: '#ffffff',
-    height: '100%',
-    paddingTop: 20,
-    width: '100%'
-  },
-  grid: {
-    flex: 1,
-    justifyContent: 'center',
   },
 });
