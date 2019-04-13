@@ -31,6 +31,7 @@ class ListItem extends React.PureComponent {
     )
   }
 }
+
 export default class Home extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     header: null
