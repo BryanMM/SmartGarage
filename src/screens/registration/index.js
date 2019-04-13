@@ -37,7 +37,6 @@ export default class App extends React.Component {
     });
   };
 
-
   _onPasswordTextChanged = event => {
     this.setState({
       userPassword: event.nativeEvent.text,
@@ -65,7 +64,6 @@ export default class App extends React.Component {
           lastName: this.state.userLastName
         }),
       }).then(async (response) => {
-
         const text = await response.text();
         const data = text && JSON.parse(text);
         if (response.ok == true) {
@@ -79,12 +77,9 @@ export default class App extends React.Component {
           console.log(error)
           alert(error);
         });
-
     } else {
       alert("Passwords do not match")
     }
-
-
   };
 
   render() {
