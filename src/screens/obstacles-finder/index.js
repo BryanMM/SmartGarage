@@ -9,6 +9,7 @@ export default class Obstruction extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     header: null
   });
+
   render() {
     return (
       <View style={styles.container}>
