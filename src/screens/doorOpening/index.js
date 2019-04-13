@@ -13,12 +13,10 @@ import iconGarageClosed from '../../assets/closedGarage.png';
 import iconGarageOpen from '../../assets/openGarage.png';
 
 export default class DoorOpening extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    header: null
-  });
   static navigationOptions = {
     header: null,
   };
+
   _onPressClose() {
     init({
       defaultExpires: 1000 * 3600 * 24,
@@ -53,6 +51,7 @@ export default class DoorOpening extends React.Component {
     function doFail(e) {
       console.log('error', e);
     }
+    
     const client = new Paho.MQTT.Client('m16.cloudmqtt.com', 31145
       , "web_" + parseInt(Math.random() * 100, 10));
     client.onConnectionLost = onConnectionLost;
@@ -67,10 +66,9 @@ export default class DoorOpening extends React.Component {
     };
 
     client.connect(options);
-
     return client
-
   }
+
   _onPressOpen() {
     init({
       defaultExpires: 1000 * 3600 * 24,
@@ -105,6 +103,7 @@ export default class DoorOpening extends React.Component {
     function doFail(e) {
       console.log('error', e);
     }
+    
     const client = new Paho.MQTT.Client('m16.cloudmqtt.com', 31145
       , "web_" + parseInt(Math.random() * 100, 10));
     client.onConnectionLost = onConnectionLost;
@@ -119,10 +118,9 @@ export default class DoorOpening extends React.Component {
     };
 
     client.connect(options);
-
     return client
-
   }
+
   render() {
     return (
       <View style={styles.mainContainer}>
