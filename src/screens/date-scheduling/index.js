@@ -21,10 +21,12 @@ class ListItem extends React.PureComponent {
     )
   }
 }
+
 export default class dateScheduling extends Component {
   static navigationOptions = ({ navigation }) => ({
     header: null
   });
+
   constructor(props) {
     super(props);
     this.state = {
@@ -61,6 +63,7 @@ export default class dateScheduling extends Component {
     const month = this.state.bookingDate.month
     const date = this.state.bookingDate.day
   }
+
   _keyExtrator = index => index.toString()
 
   _renderItem = ({ item, index }) => {
