@@ -67,14 +67,14 @@ export default class Obstruction extends React.Component {
         <View style={styles.banner}>
           <Text style={styles.bannerText}>Tap an icon and navigate through the menus</Text>
         </View>
-      <TouchableOpacity style={styles.buttonItem}
-        onPress={this._onPress}>
-        <View style={styles.buttonItem} backgroundColor='#7dceff'>
-          <View>
-            <Text style={styles.title}> Press to take a snapshot of your garage's outsides </Text>
+        <TouchableOpacity style={styles.buttonItem}
+          onPress={this._onPress}>
+          <View style={styles.buttonItem} backgroundColor='#7dceff'>
+            <View>
+              <Text style={styles.title}> Press to take a snapshot of your garage's outsides </Text>
+            </View>
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
       </View>
     );
   }
