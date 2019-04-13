@@ -11,8 +11,8 @@
 #define mqtt_port 11145
 #define mqtt_user "hwfhdjmv"
 #define mqtt_password "YQ6CQXhui74F"
-#define in_topic "/light/in"
-#define out_topic "/light/out"
+#define in_topic "/garage/in"
+#define out_topic "/garage/out"
 #define firstCondition 4
 #define secondCondition 16
 #define leftSensor 14

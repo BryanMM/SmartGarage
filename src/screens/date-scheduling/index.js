@@ -92,7 +92,6 @@ export default class dateScheduling extends Component {
       </View>
     );
   }
-
 }
 
 const styles = StyleSheet.create({

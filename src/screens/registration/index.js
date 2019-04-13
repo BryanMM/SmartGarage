@@ -51,7 +51,7 @@ export default class App extends React.Component {
 
   _onRegisterPressed = () => {
     if (this.state.userPassword == this.state.repeatedPassword) {
-      fetch('http://192.168.8.101:3000/users/register', {
+      fetch('http://192.168.8.102:3000/users/register', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -86,38 +86,38 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.banner}>
-          <Text style={styles.bannerText}>Pick a date and schedule your parkings</Text>
+          <Text style={styles.bannerText}>Enter your personal information</Text>
         </View>
         <TextInput 
           onChange={this._onUserTextChanged}
-          placeholder="Type your user name here"
+          placeholder=" User name "
           style={styles.textInput}
           underlineColorAndroid={'transparent'}
           value={this.state.userName} 
           />
         <TextInput 
           onChange={this._onNameTextChanged}
-          placeholder="Type your first name here"
+          placeholder="First name"
           underlineColorAndroid={'transparent'}
           value={this.state.userFirstName} 
           style={styles.textInput}
         />
         <TextInput 
           onChange={this._onLastNameTextChanged}
-          placeholder="Type your last name here"
+          placeholder="Last name "
           underlineColorAndroid={'transparent'}
           value={this.state.userLastName} 
           style={styles.textInput}
         />
         <TextInput onChange={this._onPasswordTextChanged}
-          placeholder="Type your password here"
+          placeholder="Password"
           secureTextEntry={true}
           style={styles.textInput}
           underlineColorAndroid={'transparent'}
           value={this.state.userPassword} 
         />
         <TextInput onChange={this._onRepeatedPasswordTextChanged}
-          placeholder="Re-type your password here"
+          placeholder="Repeat password"
           secureTextEntry={true}
           style={styles.textInput}
           underlineColorAndroid={'transparent'}
@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   registerButton: {
     alignSelf: 'stretch',
     backgroundColor: '#161D25',
-    paddingHorizontal: 160,
+    paddingHorizontal: 130,
     paddingVertical: 15,
   },
   buttonText: {

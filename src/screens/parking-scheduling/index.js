@@ -16,6 +16,7 @@ export default class ParkingScheduling extends Component {
     this._onDayPress = this._onDayPress.bind(this);
     this.state = {};
   }
+  
   _onDayPress(day) {
     this.setState({
       selected: day.dateString

@@ -15,7 +15,6 @@ class ListItem extends React.PureComponent {
   render() {
     const { item } = this.props
     const { navigation } = this.props
-
     return (
       <TouchableHighlight style={styles.gridItem}
         onPress={() => navigation.navigate(item.tag, { UserInfo: navigation.state.params.UserInfo })}>
@@ -128,7 +127,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 50,
     borderWidth: 1.5,
-    height: 50,
-    width: 60
+    height: 90,
+    width: 120
   },
 });

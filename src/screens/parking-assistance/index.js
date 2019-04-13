@@ -4,11 +4,10 @@ import {
   StyleSheet,
   Text,
   View,
+  AsyncStorage,
+  ToastAndroid,
 } from 'react-native';
-
 import init from 'react_native_mqtt';
-import { AsyncStorage } from 'react-native';
-import { ToastAndroid } from 'react-native';
 
 export default class ParkingAssistance extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -44,7 +43,6 @@ export default class ParkingAssistance extends React.Component {
 
     function onConnect() {
       console.log("onConnect");
-
       const topic = "/light/in"
       message = new Paho.MQTT.Message("4");
       message.destinationName = topic;

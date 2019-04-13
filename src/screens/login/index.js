@@ -26,7 +26,7 @@ export default class UserLogin extends React.Component {
   }
 
   _onLoginPressed = () => {
-    fetch('http://172.18.6.193:3000/users/authenticate', {
+    fetch('http://192.168.8.102:3000/users/authenticate', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   loginButton: {
     alignSelf: 'stretch',
     backgroundColor: '#cfedfc',
-    paddingHorizontal: 160,
+    paddingHorizontal: 130,
     paddingTop: 8,
     paddingVertical: 15,
   },

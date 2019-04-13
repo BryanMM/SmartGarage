@@ -3,11 +3,11 @@ import {
   Image,
   StyleSheet, 
   Text, 
-  View 
+  View,
+  AsyncStorage
 } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import init from 'react_native_mqtt';
-import { AsyncStorage } from 'react-native';
 
 import iconGarageClosed from '../../assets/closedGarage.png';
 import iconGarageOpen from '../../assets/openGarage.png';
@@ -81,7 +81,6 @@ export default class DoorOpening extends React.Component {
 
     function onConnect() {
       console.log("onConnect");
-
       const topic = "/light/in"
       const topicdos = "/light/out"
       client.subscribe(topicdos);
@@ -198,7 +197,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 50,
     borderWidth: 1.5,
-    height: 100,
-    width: 130
+    height: 90,
+    width: 120
   },
 });

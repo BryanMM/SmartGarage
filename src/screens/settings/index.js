@@ -9,10 +9,7 @@ import {
 
 export default class Settings extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    headerStyle: {
-      backgroundColor: '#161D25'
-    },
-    headerTintColor: '#cfedfc'
+    header: null
   });
 
   _onLogout = () => {
@@ -65,7 +62,7 @@ const styles = StyleSheet.create({
     padding: 30,
   },
   name: {
-    color: "#FFFFFF",
+    color: "#000000",
     fontSize: 22,
     fontWeight: '600',
   },
