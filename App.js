@@ -8,6 +8,7 @@ import parkingSchedule from './src/screens/parking-scheduling';
 import Register from './src/screens/registration';
 import Settings from './src/screens/settings';
 import SelectionMenu from './src/screens/selection-menu'
+console.disableYellowBox = true;
 
 const App = createStackNavigator({
   Login: { screen: Login },

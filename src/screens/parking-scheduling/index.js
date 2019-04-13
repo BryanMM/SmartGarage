@@ -17,7 +17,7 @@ export default class ParkingScheduling extends Component {
   }
 
   _onDayPress(day) {
-
+    alert('selected day', day)
   }
 
   render() {
@@ -29,6 +29,7 @@ export default class ParkingScheduling extends Component {
         <Calendar
           style={styles.calendar}
           minDate={'2012-05-10'}
+          onDayPress={this._onDayPress}
           displayLoadingIndicator
           markingType={'dot'}
           theme={{

@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
-export default class Register extends React.Component {
+export default class App extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    header:null
+    header: null
   });
 
   constructor(props) {
@@ -25,11 +25,18 @@ export default class Register extends React.Component {
     });
   };
 
-  _onEmailTextChanged = event => {
+  _onNameTextChanged = event => {
     this.setState({
-      userEmail: event.nativeEvent.text,
+      userFirstName: event.nativeEvent.text,
     });
   };
+
+  _onLastNameTextChanged = event => {
+    this.setState({
+      userLastName: event.nativeEvent.text,
+    });
+  };
+
 
   _onPasswordTextChanged = event => {
     this.setState({
@@ -44,33 +51,39 @@ export default class Register extends React.Component {
   };
 
   _onRegisterPressed = () => {
-    fetch('http://localhost:4000/users/register', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        username: this.state.userName,
-        lastname: this.state.userLastName,
-        password: this.state.userPassword,
+    if (this.state.userPassword == this.state.repeatedPassword) {
+      fetch('http://192.168.8.101:3000/users/register', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: this.state.userName,
+          password: this.state.userPassword,
+          firstName: this.state.userFirstName,
+          lastName: this.state.userLastName
+        }),
+      }).then(async (response) => {
 
-      }),
-    }).then(async (response) => {
+        const text = await response.text();
+        const data = text && JSON.parse(text);
+        if (response.ok == true) {
+          this.props.navigation.navigate('Login', { title: this.state.userName});
+        }
+        else {
+          alert(data.message);
+        }
+      })
+        .catch((error) => {
+          console.log(error)
+          alert(error);
+        });
 
-      const text = await response.text();
-      const data = text && JSON.parse(text);
-      if (response.ok == true) {
-        this.props.navigation.navigate('Home', { title: this.state.userEmail });
-      }
-      else {
-        alert(data.message);
-      }
-    })
-      .catch((error) => {
-        console.log(error)
-        alert(error);
-      });
+    } else {
+      alert("Passwords do not match")
+    }
+
 
   };
 
@@ -84,31 +97,31 @@ export default class Register extends React.Component {
           placeholder="Type your user name here"
           underlineColorAndroid={'transparent'}
           onChange={this._onUserTextChanged}
-          value={this.state.userFirstNameName}/>
+          value={this.state.userName} />
         <TextInput style={styles.textInput}
           placeholder="Type your first name here"
           underlineColorAndroid={'transparent'}
           onChange={this._onNameTextChanged}
-          value={this.state.userLastName}/>
+          value={this.state.userFirstName} />
         <TextInput style={styles.textInput}
           placeholder="Type your last name here"
           underlineColorAndroid={'transparent'}
           onChange={this._onLastNameTextChanged}
-          value={this.state.userLastName}/>
+          value={this.state.userLastName} />
         <TextInput style={styles.textInput}
           secureTextEntry={true}
           placeholder="Type your password here"
           underlineColorAndroid={'transparent'}
           onChange={this._onPasswordTextChanged}
-          value={this.state.userPassword}/>
+          value={this.state.userPassword} />
         <TextInput style={styles.textInput}
           secureTextEntry={true}
           placeholder="Re-type your password here"
           underlineColorAndroid={'transparent'}
           onChange={this._onRepeatedPasswordTextChanged}
-          value={this.state.repeatedPassword}/>
-        <TouchableOpacity style = {styles.registerButton} onPress = {this._onRegisterPressed}>
-              <Text style = {styles.buttonText}>Register</Text>
+          value={this.state.repeatedPassword} />
+        <TouchableOpacity style={styles.registerButton} onPress={this._onRegisterPressed}>
+          <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
       </View>
     );
@@ -145,13 +158,13 @@ const styles = StyleSheet.create({
     margin: 5,
     marginTop: 5,
   },
-  registerButton : {
+  registerButton: {
     alignSelf: 'stretch',
     backgroundColor: '#161D25',
     paddingHorizontal: 160,
     paddingVertical: 15,
   },
-  buttonText :{
+  buttonText: {
     color: 'white',
     fontFamily: 'Roboto',
     fontSize: 20,

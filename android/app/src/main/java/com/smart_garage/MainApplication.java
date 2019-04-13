@@ -1,4 +1,4 @@
-package com.smartgarage;
+package com.smart_garage;
 
 import android.app.Application;
 
