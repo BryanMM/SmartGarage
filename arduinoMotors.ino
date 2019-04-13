@@ -21,7 +21,7 @@ void setup()
     Serial.println("No camera found?");
     return;
   }
-  // Print out the camera version information (optional)
+  // Print out the camera version information
   char *reply = cam.getVersion();
   if (reply == 0) {
     Serial.print("Failed to get version");
@@ -31,33 +31,24 @@ void setup()
     Serial.println("-----------------");
   }
 
-  // Set the picture size - you can choose one of 640x480, 320x240 or 160x120 
-  // Remember that bigger pictures take longer to transmit!
-  
-  cam.setImageSize(VC0706_640x480);        // biggest
-  //cam.setImageSize(VC0706_320x240);        // medium
-  //cam.setImageSize(VC0706_160x120);          // small
-
-  // You can read the size back from the camera (optional, but maybe useful?)
+  // Set the picture size
+  cam.setImageSize(VC0706_640x480);
   uint8_t imgsize = cam.getImageSize();
   Serial.print("Image size: ");
   if (imgsize == VC0706_640x480) Serial.println("640x480");
   if (imgsize == VC0706_320x240) Serial.println("320x240");
   if (imgsize == VC0706_160x120) Serial.println("160x120");
 
-
   pinMode(incomeCommandOne, INPUT);
   pinMode(incomeCommandTwo, INPUT);
   pinMode(cameraCondition, INPUT);
   pinMode(rightForward , OUTPUT);
   pinMode(rightBackward , OUTPUT);
- 
 }
  
 void loop()
 {
   checkIncomeCommands();
-  
 }
 
 void checkIncomeCommands() {
@@ -99,6 +90,7 @@ void openGarage() {
   digitalWrite(rightBackward, LOW);
   Serial.println("done opening the garage");
 }
+//takes a picture
 void takePicture() {
   if (! cam.takePicture()) 
     Serial.println("Failed to snap!");
@@ -114,16 +106,13 @@ void takePicture() {
       break;
     }
   }
-  
   // Open the file for writing
   File imgFile = SD.open(filename, FILE_WRITE);
-
-  // Get the size of the image (frame) taken  
+  // Get the size of the image taken  
   uint16_t jpglen = cam.frameLength();
   Serial.print("Storing ");
   Serial.print(jpglen, DEC);
   Serial.print(" byte image.");
-
   int32_t time = millis();
   pinMode(8, OUTPUT);
   // Read all the data up to # bytes!
@@ -142,7 +131,6 @@ void takePicture() {
     jpglen -= bytesToRead;
   }
   imgFile.close();
-
   time = millis() - time;
   Serial.println("done!");
   Serial.print(time); Serial.println(" ms elapsed");
