@@ -3,7 +3,6 @@ import {
   BackHandler,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -125,20 +124,8 @@ export default class ParkingAssistance extends React.Component {
         userName: "hwfhdjmv",
         useSSL: true,
       };
-
       client.connect(options);
-
-
     }, 3000);
-
-  }
-
-  _handleClick = () => {
-    if (this.state.bgColor == 'red') {
-      this.setState({ bgColor: 'green' })
-    } else {
-      this.setState({ bgColor: 'red' })
-    }
 
   }
 
@@ -149,10 +136,6 @@ export default class ParkingAssistance extends React.Component {
         <View style={styles.banner}>
           <Text style={styles.bannerText}>Use the app's notifications to help you park</Text>
         </View>
-        <TouchableOpacity style={{ backgroundColor: this.state.bgColor }}
-          onPress={this._handleClick}>
-          <Text style={styles.buttonText}>{this.props.status}</Text>
-        </TouchableOpacity>
       </View>
     );
   }
@@ -160,10 +143,22 @@ export default class ParkingAssistance extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ecf0f1',
-    flex: 1,
-    justifyContent: 'center',
-    padding: 8,
+    alignItems: 'center',
+    backgroundColor: 'white',
+    height: '100%',
+    width: '100%'
+  },
+  banner: {
+    backgroundColor: '#161D25',
+    height: 60,
+    width: '100%',
+  },
+  bannerText: {
+    color: '#cfedfc',
+    fontFamily: 'Roboto',
+    fontSize: 20,
+    paddingTop: 15,
+    textAlign: 'center',
   },
   buttonText: {
     color: '#161D25',
