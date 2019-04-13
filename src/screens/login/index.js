@@ -51,7 +51,6 @@ export default class UserLogin extends React.Component {
         console.log(error)
         alert(error);
       });
-
   };
 
   _onUserTextChanged = event => {
