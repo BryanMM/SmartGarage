@@ -30,8 +30,8 @@ export default class DoorOpening extends React.Component {
     function onConnect() {
       console.log("onConnect");
 
-      const topic = "/light/in"
-      const topicdos = "/light/out"
+      const topic = "/garage/in"
+      const topicdos = "/garage/out"
       client.subscribe(topicdos);
       message = new Paho.MQTT.Message("2");
       message.destinationName = topic;
@@ -81,8 +81,8 @@ export default class DoorOpening extends React.Component {
 
     function onConnect() {
       console.log("onConnect");
-      const topic = "/light/in"
-      const topicdos = "/light/out"
+      const topic = "/garage/in"
+      const topicdos = "/garage/out"
       client.subscribe(topicdos);
       message = new Paho.MQTT.Message("1");
       message.destinationName = topic;

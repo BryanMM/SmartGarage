@@ -43,7 +43,7 @@ export default class ParkingAssistance extends React.Component {
 
     function onConnect() {
       console.log("onConnect");
-      const topic = "/light/in"
+      const topic = "/garage/in"
       message = new Paho.MQTT.Message("4");
       message.destinationName = topic;
       client.send(message);
@@ -87,8 +87,8 @@ export default class ParkingAssistance extends React.Component {
 
       function onConnect() {
         console.log("onConnect");
-        const topic = "/light/in"
-        const topic2 = "/light/out"
+        const topic = "/garage/in"
+        const topic2 = "/garage/out"
         client.subscribe(topic2);
         message = new Paho.MQTT.Message("0");
         message.destinationName = topic;
