@@ -3,16 +3,14 @@
 #include <SD.h>  
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
+#include <SoftwareSerial.h>
 
 #define wifi_ssid "ARRIS-0F92"
 #define wifi_password "artoz592437bam"
-#include <SoftwareSerial.h>
-
 #define mqtt_server "m16.cloudmqtt.com"
 #define mqtt_port 11145
 #define mqtt_user "hwfhdjmv"
 #define mqtt_password "YQ6CQXhui74F"
-
 #define in_topic "/light/in"
 #define out_topic "/light/out"
 #define firstCondition 4
@@ -24,7 +22,6 @@
 
 SoftwareSerial swSer(13, 14, false, 128);
 Adafruit_VC0706 cam = Adafruit_VC0706(&swSer);
-
 WiFiClient espClient;
 PubSubClient client;
 
@@ -48,14 +45,11 @@ void setup_wifi() {
   Serial.println();
   Serial.println("Connecting to ");
   Serial.println(wifi_ssid);
-
   WiFi.begin(wifi_ssid, wifi_password);
-
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.println(".");
   }
-
   Serial.println("");
   Serial.println("WiFi connected");
   Serial.println("IP address: ");
@@ -67,8 +61,6 @@ void reconnect() {
   while (!client.connected()) {
     Serial.println("Attempting MQTT connection...");
     // Attempt to connect
-    // If you do not want to use a username and password, change next line to
-    // if (client.connect("ESP8266Client")) {
     if (client.connect("ESP8266Client", mqtt_user, mqtt_password)) {
       Serial.println("connected");
     } else {
@@ -102,16 +94,11 @@ void callback(char* topic, byte* payload, unsigned int length) {
 }
 
 void loop() {
-  
   if (!client.connected()) {
     reconnect();
   }
   client.loop();
-  // Publishes a random 0 and 1 like someone switching off and on randomly (random(2))
-  //client.publish(out_topic, String(random(2)).c_str(), true);
-  //delay(1000);
   client.subscribe(in_topic);
-  //delay(1000);
 }
 
 void checkSides () {
@@ -141,7 +128,7 @@ void checkSides () {
     }
     else {
       client.publish(out_topic, "safe", true);
-      } 
+    } 
 }
 void openGarage() {
    Serial.println("opening the garage door");
@@ -155,6 +142,5 @@ void closeGarage() {
    digitalWrite(secondCondition, HIGH); 
 }
 
-void takePicture() {
-   
+void takePicture() {  
 }
