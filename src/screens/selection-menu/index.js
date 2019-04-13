@@ -28,12 +28,12 @@ class ListItem extends React.PureComponent {
           <View />
         </View>
       </TouchableHighlight>
-      )
+    )
   }
 }
 export default class Home extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-      header:null
+    header: null
   });
 
   constructor(props) {

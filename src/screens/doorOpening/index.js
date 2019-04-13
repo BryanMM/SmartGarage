@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { Image, Text, View, StyleSheet } from 'react-native';
+import { 
+  Image,
+  StyleSheet, 
+  Text, 
+  View 
+} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import init from 'react_native_mqtt';
 import { AsyncStorage } from 'react-native';
@@ -13,11 +18,11 @@ export default class DoorOpening extends React.Component {
   };
   _onPressClose() {
     init({
-      size: 10000,
-      storageBackend: AsyncStorage,
       defaultExpires: 1000 * 3600 * 24,
       enableCache: true,
       reconnect: true,
+      size: 10000,
+      storageBackend: AsyncStorage,
       sync: {}
     });
 
@@ -51,11 +56,11 @@ export default class DoorOpening extends React.Component {
     client.onMessageArrived = onMessageArrived;
 
     const options = {
-      useSSL: true,
-      userName: "hwfhdjmv",
-      password: "YQ6CQXhui74F",
+      onFailure: doFail,
       onSuccess: onConnect,
-      onFailure: doFail
+      password: "YQ6CQXhui74F",
+      userName: "hwfhdjmv",
+      useSSL: true,
     };
 
     client.connect(options);
@@ -65,11 +70,11 @@ export default class DoorOpening extends React.Component {
   }
   _onPressOpen() {
     init({
-      size: 10000,
-      storageBackend: AsyncStorage,
       defaultExpires: 1000 * 3600 * 24,
       enableCache: true,
       reconnect: true,
+      size: 10000,
+      storageBackend: AsyncStorage,
       sync: {}
     });
 
@@ -103,11 +108,11 @@ export default class DoorOpening extends React.Component {
     client.onMessageArrived = onMessageArrived;
 
     const options = {
-      useSSL: true,
-      userName: "hwfhdjmv",
-      password: "YQ6CQXhui74F",
+      onFailure: doFail,
       onSuccess: onConnect,
-      onFailure: doFail
+      password: "YQ6CQXhui74F",
+      userName: "hwfhdjmv",
+      useSSL: true,
     };
 
     client.connect(options);
@@ -154,15 +159,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   banner: {
-    width: '100%',
+    backgroundColor: '#161D25',
     height: 60,
-    backgroundColor: '#161D25'
+    width: '100%',
   },
   bannerText: {
     color: '#cfedfc',
-    paddingTop: 15,
     fontFamily: 'Roboto',
     fontSize: 20,
+    paddingTop: 15,
     textAlign: 'center',
   },
   secondaryContainer: {

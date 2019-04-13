@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
-  Text,
   StyleSheet,
+  Text,
   View
 } from 'react-native';
-import {Calendar} from 'react-native-calendars';
+import { Calendar } from 'react-native-calendars';
 
 export default class ParkingScheduling extends Component {
   static navigationOptions = ({
@@ -12,13 +12,16 @@ export default class ParkingScheduling extends Component {
   });
   constructor(props) {
     super(props);
+    this._onDayPress = this._onDayPress.bind(this);
     this.state = {};
-    markedDates = {};
+  }
+  _onDayPress(day) {
+    this.setState({
+      selected: day.dateString
+    });
+    this.props.navigation.navigate('dateScheduling', { schedulingDay: day })
   }
 
-  _onDayPress(day) {
-    alert('selected day', day)
-  }
 
   render() {
     return (
@@ -27,31 +30,30 @@ export default class ParkingScheduling extends Component {
           <Text style={styles.bannerText}>Pick a date and schedule your parkings</Text>
         </View>
         <Calendar
-          style={styles.calendar}
-          minDate={'2012-05-10'}
-          onDayPress={this._onDayPress}
           displayLoadingIndicator
           markingType={'dot'}
+          minDate={'2012-05-10'}
+          onDayPress={this._onDayPress}
+          style={styles.calendar}
           theme={{
+            arrowColor: 'black',
             calendarBackground: 'white',
-            textSectionTitleColor: 'black',
             dayTextColor: 'black',
-            todayTextColor: 'blue',
-            selectedDayTextColor: '#cfedfc',
             monthTextColor: 'black',
             selectedDayBackgroundColor: '#cfedfc',
-            arrowColor: 'black',
+            selectedDayTextColor: '#cfedfc',
+            textSectionTitleColor: 'black',
+            todayTextColor: 'blue',
             'stylesheet.calendar.header': {
               week: {
-                marginTop: 5,
                 flexDirection: 'row',
-                justifyContent: 'space-between'
+                justifyContent: 'space-between',
+                marginTop: 5,
               }
             }
           }}
-          markedDates={
-          this.props.markedDates}
           hideArrows={false}
+          markedDates={{ [this.state.selected]: { selected: true } }}
         />
 
       </View>
@@ -65,21 +67,21 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
   banner: {
-    width: '100%',
+    backgroundColor: '#161D25',
     height: 60,
-    backgroundColor: '#161D25'
+    width: '100%',
   },
   bannerText: {
     color: '#cfedfc',
-    paddingTop: 15,
     fontFamily: 'Roboto',
     fontSize: 20,
+    paddingTop: 15,
     textAlign: 'center',
   },
   calendar: {
-    borderTopWidth: 1,
-    paddingTop: 5,
     borderBottomWidth: 1,
-    height: 350
+    borderTopWidth: 1,
+    height: 350,
+    paddingTop: 5,
   },
 });

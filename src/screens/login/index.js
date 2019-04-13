@@ -1,15 +1,15 @@
 import * as React from 'react';
 import {
-  Text,
-  TextInput,
-  View,
+  ActivityIndicator,
   Image,
   StyleSheet,
-  ActivityIndicator,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
 import smartGarage from '../../assets/smartGarage.png';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 export default class UserLogin extends React.Component {
@@ -27,7 +27,7 @@ export default class UserLogin extends React.Component {
   }
 
   _onLoginPressed = () => {
-    fetch('http://192.168.8.101:3000/users/authenticate', {
+    fetch('http://172.18.6.193:3000/users/authenticate', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -38,16 +38,16 @@ export default class UserLogin extends React.Component {
         password: this.state.userPassword
       }),
     })
-    .then(async (response) => {
-      const text = await response.text();
-      const data = text && JSON.parse(text);
-      if (response.ok == true) {
-        this.props.navigation.navigate('Home', { UserInfo: data });
-      }
-      else {
-        alert(data.message);
-      }
-    })
+      .then(async (response) => {
+        const text = await response.text();
+        const data = text && JSON.parse(text);
+        if (response.ok == true) {
+          this.props.navigation.navigate('Home', { UserInfo: data });
+        }
+        else {
+          alert(data.message);
+        }
+      })
       .catch((error) => {
         console.log(error)
         alert(error);
@@ -89,10 +89,10 @@ export default class UserLogin extends React.Component {
           value={this.state.userEmail}
         />
         <TextInput
-          secureTextEntry={true}
           onChange={this._onPasswordTextChanged}
           placeholder="Password"
           placeholderTextColor="#cfedfc"
+          secureTextEntry={true}
           style={styles.textInput}
           underlineColorAndroid={'transparent'}
           value={this.state.userPassword}

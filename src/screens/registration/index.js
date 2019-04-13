@@ -69,7 +69,7 @@ export default class App extends React.Component {
         const text = await response.text();
         const data = text && JSON.parse(text);
         if (response.ok == true) {
-          this.props.navigation.navigate('Login', { title: this.state.userName});
+          this.props.navigation.navigate('Login', { title: this.state.userName });
         }
         else {
           alert(data.message);
@@ -93,34 +93,44 @@ export default class App extends React.Component {
         <View style={styles.banner}>
           <Text style={styles.bannerText}>Pick a date and schedule your parkings</Text>
         </View>
-        <TextInput style={styles.textInput}
-          placeholder="Type your user name here"
-          underlineColorAndroid={'transparent'}
+        <TextInput 
           onChange={this._onUserTextChanged}
-          value={this.state.userName} />
-        <TextInput style={styles.textInput}
+          placeholder="Type your user name here"
+          style={styles.textInput}
+          underlineColorAndroid={'transparent'}
+          value={this.state.userName} 
+          />
+        <TextInput 
+          onChange={this._onNameTextChanged}
           placeholder="Type your first name here"
           underlineColorAndroid={'transparent'}
-          onChange={this._onNameTextChanged}
-          value={this.state.userFirstName} />
-        <TextInput style={styles.textInput}
+          value={this.state.userFirstName} 
+          style={styles.textInput}
+        />
+        <TextInput 
+          onChange={this._onLastNameTextChanged}
           placeholder="Type your last name here"
           underlineColorAndroid={'transparent'}
-          onChange={this._onLastNameTextChanged}
-          value={this.state.userLastName} />
-        <TextInput style={styles.textInput}
-          secureTextEntry={true}
+          value={this.state.userLastName} 
+          style={styles.textInput}
+        />
+        <TextInput onChange={this._onPasswordTextChanged}
           placeholder="Type your password here"
-          underlineColorAndroid={'transparent'}
-          onChange={this._onPasswordTextChanged}
-          value={this.state.userPassword} />
-        <TextInput style={styles.textInput}
           secureTextEntry={true}
-          placeholder="Re-type your password here"
+          style={styles.textInput}
           underlineColorAndroid={'transparent'}
-          onChange={this._onRepeatedPasswordTextChanged}
-          value={this.state.repeatedPassword} />
-        <TouchableOpacity style={styles.registerButton} onPress={this._onRegisterPressed}>
+          value={this.state.userPassword} 
+        />
+        <TextInput onChange={this._onRepeatedPasswordTextChanged}
+          placeholder="Re-type your password here"
+          secureTextEntry={true}
+          style={styles.textInput}
+          underlineColorAndroid={'transparent'}
+          value={this.state.repeatedPassword} 
+        />
+        <TouchableOpacity 
+          onPress={this._onRegisterPressed}
+          style={styles.registerButton} >
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
       </View>
@@ -136,15 +146,15 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   banner: {
-    width: '100%',
+    backgroundColor: '#161D25',
     height: 60,
-    backgroundColor: '#161D25'
+    width: '100%',
   },
   bannerText: {
     color: '#cfedfc',
-    paddingTop: 15,
     fontFamily: 'Roboto',
     fontSize: 20,
+    paddingTop: 15,
     textAlign: 'center',
   },
   textInput: {

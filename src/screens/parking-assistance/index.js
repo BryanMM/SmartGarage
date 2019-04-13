@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { BackHandler, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  BackHandler,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 import init from 'react_native_mqtt';
 import { AsyncStorage } from 'react-native';
-import { thisTypeAnnotation } from '@babel/types';
+import { ToastAndroid } from 'react-native';
 
 export default class ParkingAssistance extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -13,24 +19,27 @@ export default class ParkingAssistance extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: '',
-      bgColor: 'green'
+      bgColor: 'green',
+      status: 'waiting for reply',
     };
   }
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', this._onExit);
+    setTimeout(function () {
+
+    }, 1000);
   }
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this._onExit);
   }
-  
+
   _onExit = () => {
-      init({
-      size: 10000,
-      storageBackend: AsyncStorage,
+    init({
       defaultExpires: 1000 * 3600 * 24,
       enableCache: true,
       reconnect: true,
+      size: 10000,
+      storageBackend: AsyncStorage,
       sync: {}
     });
 
@@ -53,76 +62,81 @@ export default class ParkingAssistance extends React.Component {
       console.log('error', e);
     }
     const client = new Paho.MQTT.Client('m16.cloudmqtt.com', 31145
-    , "web_" + parseInt(Math.random() * 100, 10));
+      , "web_" + parseInt(Math.random() * 100, 10));
     client.onConnectionLost = onConnectionLost;
 
     const options = {
-      useSSL: true,
-      userName: "hwfhdjmv",
-      password: "YQ6CQXhui74F",
+      onFailure: doFail,
       onSuccess: onConnect,
-      onFailure: doFail
+      password: "YQ6CQXhui74F",
+      userName: "hwfhdjmv",
+      useSSL: true,
     };
 
     client.connect(options);
     this.props.navigation.navigate('SelectionMenu');
     return client
   }
-  _onStart() {
-    init({
-      size: 10000,
-      storageBackend: AsyncStorage,
-      defaultExpires: 1000 * 3600 * 24,
-      enableCache: true,
-      reconnect: true,
-      sync: {}
-    });
+  _onStart = () => {
+    setInterval(function () {
+      init({
+        defaultExpires: 1000 * 3600 * 24,
+        enableCache: true,
+        reconnect: true,
+        size: 10000,
+        storageBackend: AsyncStorage,
+        sync: {}
+      });
 
-    function onConnect() {
-      console.log("onConnect");
-
-      const topic = "/light/in"
-      const topic2 = "/light/out"
-      client.subscribe(topic2);
-      message = new Paho.MQTT.Message("0");
-      message.destinationName = topic;
-      client.send(message);
-    }
-
-    function onConnectionLost(responseObject) {
-      if (responseObject.errorCode !== 0) {
-        console.log("onConnectionLost:" + responseObject.errorMessage);
+      function onConnect() {
+        console.log("onConnect");
+        const topic = "/light/in"
+        const topic2 = "/light/out"
+        client.subscribe(topic2);
+        message = new Paho.MQTT.Message("0");
+        message.destinationName = topic;
+        client.send(message);
       }
-    }
 
-    function onMessageArrived(message) {
-      this.props.status = message.payloadString;
-    }
+      function onConnectionLost(responseObject) {
+        if (responseObject.errorCode !== 0) {
+          console.log("onConnectionLost:" + responseObject.errorMessage);
+        }
+      }
 
-    function doFail(e) {
-      console.log('error', e);
-    }
-    const client = new Paho.MQTT.Client('m16.cloudmqtt.com', 31145
-    , "web_" + parseInt(Math.random() * 100, 10));
-    client.onConnectionLost = onConnectionLost;
-    client.onMessageArrived = onMessageArrived;
+      function onMessageArrived(message) {
+        ToastAndroid.show(message.payloadString, ToastAndroid.SHORT);
+        client.unsubscribe(topic2)
+        client.disconnect
+      }
 
-    const options = {
-      useSSL: true,
-      userName: "hwfhdjmv",
-      password: "YQ6CQXhui74F",
-      onSuccess: onConnect,
-      onFailure: doFail
-    };
+      function doFail(e) {
+        console.log('error', e);
+      }
+      const client = new Paho.MQTT.Client('m16.cloudmqtt.com', 31145
+        , "web_" + parseInt(Math.random() * 100, 10));
+      client.onConnectionLost = onConnectionLost;
+      client.onMessageArrived = onMessageArrived;
 
-    client.connect(options);
-    return client
+      const options = {
+        onFailure: doFail,
+        onSuccess: onConnect,
+        password: "YQ6CQXhui74F",
+        userName: "hwfhdjmv",
+        useSSL: true,
+      };
+
+      client.connect(options);
+
+
+    }, 3000);
+
   }
-  
+
   _handleClick = () => {
-    if(this.state.bgColor == 'red'){
+    if (this.state.bgColor == 'red') {
       this.setState({ bgColor: 'green' })
-    }else{
+    } else {
       this.setState({ bgColor: 'red' })
     }
 
