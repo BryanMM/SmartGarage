@@ -79,6 +79,9 @@ export default class Home extends React.Component {
   render() {
     return (
       <View style={styles.homeBackground}>
+        <View style={styles.banner}>
+          <Text style={styles.bannerText}>Tap an icon and navigate through the menus</Text>
+        </View>
         <FlatList
           contentContainerStyle={styles.grid}
           data={this.state.gridItems}
@@ -96,8 +99,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ffffff',
     height: '100%',
-    paddingTop: 20,
     width: '100%'
+  },
+  banner: {
+    backgroundColor: '#161D25',
+    height: 60,
+    width: '100%',
+  },
+  bannerText: {
+    color: '#cfedfc',
+    fontFamily: 'Roboto',
+    fontSize: 20,
+    paddingTop: 15,
+    textAlign: 'center',
   },
   grid: {
     flex: 1,

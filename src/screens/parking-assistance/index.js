@@ -146,6 +146,9 @@ export default class ParkingAssistance extends React.Component {
     this._onStart();
     return (
       <View style={styles.container}>
+        <View style={styles.banner}>
+          <Text style={styles.bannerText}>Pick a date and schedule your parkings</Text>
+        </View>
         <TouchableOpacity style={{ backgroundColor: this.state.bgColor }}
           onPress={this._handleClick}>
           <Text style={styles.buttonText}>{this.props.status}</Text>

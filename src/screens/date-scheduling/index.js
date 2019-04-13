@@ -14,7 +14,7 @@ class ListItem extends React.PureComponent {
       <TouchableOpacity style={styles.gridItem}>
         <View style={styles.gridItem} backgroundColor='#7dceff'>
           <View>
-            <Text style={styles.title}> {item.title} </Text>
+            <Text style={styles.title}> {item.hour} </Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -76,6 +76,9 @@ export default class dateScheduling extends Component {
   render() {
     return (
       <View style={styles.homeBackground}>
+        <View style={styles.banner}>
+          <Text style={styles.bannerText}>Press the hour where you'll schedule your parking</Text>
+        </View>
         <FlatList
           contentContainerStyle={styles.grid}
           data={this.state.hours}
@@ -94,8 +97,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#ffffff',
     height: '100%',
-    paddingTop: 20,
     width: '100%'
+  },
+  banner: {
+    backgroundColor: '#161D25',
+    height: 60,
+    width: '100%',
+  },
+  bannerText: {
+    color: '#cfedfc',
+    fontFamily: 'Roboto',
+    fontSize: 20,
+    paddingTop: 15,
+    textAlign: 'center',
   },
   grid: {
     flex: 1,
@@ -113,7 +127,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#161D25',
     fontFamily: 'Roboto',
-    fontSize: 12,
+    fontSize: 17,
     fontWeight: 'bold',
     paddingBottom: 15,
     textAlign: 'center',
