@@ -10,6 +10,7 @@ export default class ParkingScheduling extends Component {
   static navigationOptions = ({
     header: null
   });
+
   constructor(props) {
     super(props);
     this._onDayPress = this._onDayPress.bind(this);
@@ -54,7 +55,6 @@ export default class ParkingScheduling extends Component {
           hideArrows={false}
           markedDates={{ [this.state.selected]: { selected: true } }}
         />
-
       </View>
     );
   }
